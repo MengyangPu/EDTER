@@ -1,5 +1,5 @@
 # EDTER
-> [EDTER: Edge Detection with Transformer]()                 
+> [EDTER: Edge Detection with Transformer](https://arxiv.org/abs/2203.08566)                 
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
 
