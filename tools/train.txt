@@ -1,0 +1,3 @@
+run
+bash ./tools/dist_train.sh configs/bsds/VIT_BIMLA_320x320_80k_bsds_bs_8.py 8
+bash ./tools/dist_train_local.sh configs/bsds/VIT_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/VIT_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 8
