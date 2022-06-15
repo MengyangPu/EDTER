@@ -6,6 +6,11 @@
 Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blob/main/supp/EDTER-supp.pdf) for more results.
 
 ## Usage
+
+### Datasets
+#### BSDS500
+Download the augmented BSDS500 data (1.2GB) from [here](http://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
+
 ### Pre-trained model
 If you are unable to download due to network reasons, you can download the pre-trained model from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
 
@@ -32,7 +37,7 @@ python test.py
 ```
 
 #### Multi-scale testing
-Change the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
+Change the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).<br/>
 Use the config file ending in _ms.py in configs/EDTER.
 ```shell
 python test_local.py
