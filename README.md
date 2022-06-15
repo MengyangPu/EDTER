@@ -61,6 +61,18 @@ Use the config file ending in _ms.py in configs/EDTER.
 python test_local.py
 ```
 
+### Results
+If you want to compare your method with EDTER, you can download the precomputed results [here](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing).
+
+### Download Pre-trained model.
+
+| model                                            | Pre-trained Model                                                              |
+| ------------------------------------------------ | ------------------------------------------------------------------------------ | 
+|[BSDS-StageI]()               | [Coming Soon]()  |
+|[BSDS-StageII]()              | [Coming Soon]()  |
+|[BSDS-Aug-StageI]()           | [Coming Soon]()  |
+|[BSDS-Aug-StageII]()          | [Coming Soon]()  |
+
 ## Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
 - Thanks to previous open-sourced repo:<br/>
