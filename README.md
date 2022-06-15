@@ -10,6 +10,24 @@ Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blo
 ### Datasets
 #### BSDS500
 Download the augmented BSDS500 data (1.2GB) from [here](http://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
+```
+|-- data
+    |-- BSDS
+        |-- ImageSets
+        |   |-- train_pair.txt
+        |   |-- test.txt
+        |   |-- pascal_train_pair.txt
+        |-- train
+        |   |-- aug_data
+        |   |-- aug_data_scale_0.5
+        |   |-- aug_data_scale_1.5
+        |   |-- aug_gt
+        |   |-- aug_gt_scale_0.5
+        |   |-- aug_gt_scale_1.5
+        |-- test
+        |   |-- 2018.jpg
+        ......
+```
 
 ### Pre-trained model
 If you are unable to download due to network reasons, you can download the pre-trained model from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
