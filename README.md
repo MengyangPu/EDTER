@@ -4,3 +4,54 @@
 > *CVPR 2022*
 
 Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blob/main/supp/EDTER-supp.pdf) for more results.
+
+## Usage
+### Pre-trained model
+If you are unable to download due to network reasons, you can download the pre-trained model from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
+
+### Training
+#### The training of Stage I
+```shell
+./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
+# For example, train Stage I on BSDS500 dataset with 8 GPUs
+./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 8
+```
+#### The training of Stage II
+Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
+```shell
+./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM} 
+# For example, train Stage II on BSDS500 dataset with 8 GPUs
+./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 8
+```
+
+### Testing
+#### Single-scale testing
+Change the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
+```shell
+python test.py
+```
+
+#### Multi-scale testing
+Change the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
+Use the config file ending in _ms.py in configs/EDTER.
+```shell
+python test_local.py
+```
+
+## Acknowledgments
+- We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
+- Thanks to previous open-sourced repo:<br/>
+  [SETR](https://github.com/fudan-zvg/SETR)<br/>
+  [MMsegmentation](https://github.com/open-mmlab/mmsegmentation)<br/>
+
+## Reference
+```bibtex
+@InProceedings{Pu_2022_CVPR,
+    author    = {Pu, Mengyang and Huang, Yaping and Liu, Yuming and Guan, Qingji and Ling, Haibin},
+    title     = {EDTER: Edge Detection With Transformer},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2022},
+    pages     = {1402-1412}
+}
+```
