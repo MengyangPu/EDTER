@@ -51,14 +51,14 @@ Change the '--global-model-path' in [train_local.py](https://github.com/Mengyang
 #### Single-scale testing
 Change the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
 ```shell
-python test.py
+python tools/test.py
 ```
 
 #### Multi-scale testing
 Change the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).<br/>
 Use the config file ending in _ms.py in configs/EDTER.
 ```shell
-python test_local.py
+python tools/test_local.py
 ```
 
 ### Results
@@ -68,8 +68,8 @@ If you want to compare your method with EDTER, you can download the precomputed 
 
 | model                                            | Pre-trained Model                                                              |
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
-|[EDTER-BSDS-VOC-StageI]()           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA)  (Code:l282)  |
-|[EDTER-BSDS-VOC-StageII]()          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw)  (Code:skjw)  |
+|[EDTER-BSDS-VOC-StageI](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py/)           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA)  (Code:l282)  |
+|[EDTER-BSDS-VOC-StageII](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw)  (Code:skjw)  |
 ## Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
 - Thanks to previous open-sourced repo:<br/>
