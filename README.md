@@ -68,8 +68,8 @@ If you want to compare your method with EDTER, you can download the precomputed 
 
 | model                                            | Pre-trained Model                                                              |
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
-|[EDTER-BSDS-VOC-StageI]()           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA)Code:l282   |
-|[EDTER-BSDS-VOC-StageII]()          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw)Code:skjw   |
+|[EDTER-BSDS-VOC-StageI]()           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA)  (Code:l282)  |
+|[EDTER-BSDS-VOC-StageII]()          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw)  (Code:skjw)  |
 ## Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
 - Thanks to previous open-sourced repo:<br/>
