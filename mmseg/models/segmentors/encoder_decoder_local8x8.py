@@ -90,7 +90,6 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
                 self.auxiliary_head.init_weights()
 
         print('Loading Global Model=======> '+self.global_cfg.global_model_path)
-        #evaluate_model_path = '/home/pumengyang/Projects/VIT-Edge-lym3/work_dirs3/VIT_BIMLA_320x320_80k_bsds_bs_8/iter_30000.pth'
         if not osp.isfile(self.global_cfg.global_model_path):
             raise RuntimeError("========> no checkpoint found at '{}'".format(self.global_cfg.global_model_path))
         global_model_dict = torch.load(self.global_cfg.global_model_path, map_location='cpu')
@@ -383,8 +382,8 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
         decode without padding.
         """
         batch_size, _, h_img, w_img = img.size()
-        img_crop = img[:, :, 0:h_img - 1, 0:w_img - 1]
-        #img_crop = img[:, :, 0:h_img - 1, :]
+        img_crop = img[:, :, 0:h_img - 1, 0:w_img - 1]   # for BSDS500
+        #img_crop = img[:, :, 0:h_img - 1, :]   # for NYUD
         batch_size, _, h_crop_img, w_crop_img = img_crop.size()
 
         global_features_crop = self.global_model.slide_inference_global_features(img_crop,img_meta, rescale).detach()
@@ -434,17 +433,8 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
         fuse_outs_crop = self._fuse_head_forward_test(local_features_crop, global_features_crop)
 
         fuse_outs = torch.zeros((batch_size,num_classes, h_img, w_img))
-        fuse_outs[:, :, 0:h_img - 1, 0:w_img - 1] = fuse_outs_crop
-        #fuse_outs[:, :, 0:h_img - 1, :] = fuse_outs_crop
-        '''
-        if rescale:
-            fuse_outs = resize(
-                fuse_outs,
-                size=img_meta[0]['ori_shape'][:2],
-                mode='bilinear',
-                align_corners=self.align_corners,
-                warning=False)
-        '''
+        fuse_outs[:, :, 0:h_img - 1, 0:w_img - 1] = fuse_outs_crop    # for BSDS500
+        #fuse_outs[:, :, 0:h_img - 1, :] = fuse_outs_crop   # for NYUD
         return fuse_outs
 
     def slide_inference2(self, img, img_meta, rescale):
