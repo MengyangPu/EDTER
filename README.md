@@ -95,7 +95,7 @@ run eval_bsds.m
 ```
 
 ### Results
-If you want to compare your method with EDTER, you can download the precomputed results [here](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing).
+If you want to compare your method with EDTER, you can download the precomputed results [BSDS500](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing) and [NYUD](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw)(code:b941).
 
 ### Download Pre-trained model.
 
