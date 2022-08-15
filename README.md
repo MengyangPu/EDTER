@@ -28,6 +28,34 @@ Download the augmented BSDS500 data (1.2GB) from [here](http://vcl.ucsd.edu/hed/
         |   |-- 2018.jpg
         ......
 ```
+#### NYUD
+Download the augmented NYUD data from [here]()(Code:).<br/>
+```
+|-- data
+    |-- NYUD
+        |-- ImageSets
+        |   |-- hha-test.txt
+        |   |-- hha-train.txt
+        |   |-- image-test.txt
+        |   |-- image-train.txt
+        |-- train
+            |-- GT
+            |-- GT_05
+            |-- GT_15
+            |-- HHA
+            |-- HHA_05
+            |-- HHA_15
+            |-- Images
+            |-- Images_05
+            |-- Images_15
+        |-- test
+            |-- HHA
+            |   |-- img_5001.png
+            ......
+            |-- Images
+            |   |-- img_5001.png
+            ......
+```
 
 ### Pre-trained model
 If you are unable to download due to network reasons, you can download the pre-trained model from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
