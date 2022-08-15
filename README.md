@@ -29,7 +29,7 @@ Download the augmented BSDS500 data (1.2GB) from [here](http://vcl.ucsd.edu/hed/
         ......
 ```
 #### NYUD
-Download the augmented NYUD data from [here]()(Code:).<br/>
+Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg)(Code:t2ce).<br/>
 ```
 |-- data
     |-- NYUD
@@ -103,6 +103,12 @@ If you want to compare your method with EDTER, you can download the precomputed 
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
 |[EDTER-BSDS-VOC-StageI](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py/)           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA)  (Code:l282)  |
 |[EDTER-BSDS-VOC-StageII](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw)  (Code:skjw)  |
+|[EDTER-NYUD-RGB-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_bs_4.py/)          | [BaiDuNetdisk]()  (Code:)  |
+|[EDTER-NYUD-RGB-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_local8x8_bs_4.py/)          | [BaiDuNetdisk]()  (Code:)  |
+|[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk]()  (Code:)  |
+|[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk]()  (Code:)  |
+
+
 ## Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
 - Thanks to previous open-sourced repo:<br/>
