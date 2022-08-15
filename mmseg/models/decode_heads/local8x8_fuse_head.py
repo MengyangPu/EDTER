@@ -38,14 +38,12 @@ class SFTLayer(nn.Module):
 @HEADS.register_module()
 class Local8x8_fuse_head(BaseDecodeHead):
 
-    def __init__(self, img_size=320, mla_channels=128, mlahead_channels=128,
-    #def __init__(self, img_size=320, mla_channels=64, mlahead_channels=64,
-                norm_layer=nn.BatchNorm2d, norm_cfg=None, **kwargs):
+    def __init__(self, img_size=320, norm_layer=nn.BatchNorm2d, norm_cfg=None, **kwargs):
         super(Local8x8_fuse_head, self).__init__(**kwargs)
 
         self.img_size = img_size
-        self.channels = mla_channels
-        self.head_channels = mlahead_channels
+        self.channels = self.in_channels
+        self.head_channels = self.channels
         self.norm_cfg = norm_cfg
         self.BatchNorm = norm_layer
 
