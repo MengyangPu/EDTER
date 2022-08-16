@@ -88,10 +88,17 @@ Use the config file ending in _ms.py in configs/EDTER.
 ```shell
 python tools/test_local.py
 ```
-### Eval
+### [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
+#### BSDS500
 ```shell
 cd eval
 run eval_bsds.m
+```
+#### NYUD
+Download the matfile(NYUD) from [here]([http://vcl.ucsd.edu/hed/HED-BSDS.tar](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA)(Code:25p8).<br/>
+```shell
+cd eval
+run eval_nyud.m
 ```
 
 ### Results
