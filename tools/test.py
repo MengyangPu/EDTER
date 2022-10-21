@@ -1,6 +1,6 @@
 import argparse
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import mmcv
 import torch
 from mmcv.parallel import MMDataParallel, MMDistributedDataParallel
@@ -11,14 +11,14 @@ from mmseg.apis import multi_gpu_test, single_gpu_test
 from mmseg.datasets import build_dataloader, build_dataset
 from mmseg.models import build_segmentor
 
-#os.environ['RANK']='0'
-#os.environ['WORLD_SIZE']='1'
-#os.environ['MASTER_ADDR']='127.0.0.8'
-#os.environ['MASTER_PORT']='29508'
+os.environ['RANK']='0'
+os.environ['WORLD_SIZE']='1'
+os.environ['MASTER_ADDR']='127.0.0.1'
+os.environ['MASTER_PORT']='29501'
 
 def parse_args():
     parser = argparse.ArgumentParser(description='mmseg test (and eval) a model')
-    parser.add_argument('--config', type=str, default='configs/bsds/VIT_BIMLA_320x320_80k_bsds_bs_8.py', help='train config file path')
+    parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py', help='train config file path')
     parser.add_argument('--checkpoint', type=str, default='/....Your Path..../XXXXX.pth')
     parser.add_argument(
         '--aug-test', action='store_true', help='Use Flip and Multi scale aug')

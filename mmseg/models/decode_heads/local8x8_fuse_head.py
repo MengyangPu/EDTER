@@ -29,21 +29,24 @@ class SFTLayer(nn.Module):
         self.SFT_shift_conv1 = nn.Conv2d(head_channels, head_channels, 1)
 
     def forward(self, local_features, global_features):
+        #print('=====local_features=====global_features=====')
+        #print(local_features.shape, global_features.shape)
         scale = self.SFT_scale_conv1(F.relu(self.SFT_scale_conv0(global_features),inplace=True))
         shift = self.SFT_shift_conv1(F.relu(self.SFT_shift_conv0(global_features),inplace=True))
         fuse_features = local_features * (scale+1) +shift
         return fuse_features
 
-
 @HEADS.register_module()
 class Local8x8_fuse_head(BaseDecodeHead):
 
-    def __init__(self, img_size=320, norm_layer=nn.BatchNorm2d, norm_cfg=None, **kwargs):
+    #def __init__(self, img_size=320, mla_channels=128, mlahead_channels=64,
+    def __init__(self, img_size=320, mla_channels=128, mlahead_channels=128,
+                norm_layer=nn.BatchNorm2d, norm_cfg=None, **kwargs):
         super(Local8x8_fuse_head, self).__init__(**kwargs)
 
         self.img_size = img_size
-        self.channels = self.in_channels
-        self.head_channels = self.channels
+        self.channels = mla_channels
+        self.head_channels = mlahead_channels
         self.norm_cfg = norm_cfg
         self.BatchNorm = norm_layer
 
@@ -65,7 +68,6 @@ class Local8x8_fuse_head(BaseDecodeHead):
 
     def forward(self, local_features, global_features):
         fuse_features = self.SFT_head(local_features, global_features)
-        #fuse_features = torch.cat([local_features, global_features], dim=1)
         fuse_edge = self.edge_head(fuse_features)
         fuse_edge = torch.sigmoid(fuse_edge)
         return fuse_edge, fuse_features

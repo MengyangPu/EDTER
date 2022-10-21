@@ -27,7 +27,6 @@ class VIT_BIMLA_AUXIHead(BaseDecodeHead):
         elif self.in_channels==256:
             self.aux = nn.Sequential(
                 nn.ConvTranspose2d(self.in_channels, self.in_channels, 4, stride=2, padding=1, bias=False),
-                #nn.ConvTranspose2d(self.in_channels, 1, 16, stride=8, padding=4, bias=False),
                 nn.ConvTranspose2d(self.in_channels, 1, 16, stride=8, padding=4, bias=False),
                 #nn.Conv2d(self.in_channels, 1, kernel_size=1, bias=False)
             )

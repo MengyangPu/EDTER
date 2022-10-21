@@ -79,6 +79,7 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
             pretrained (str, optional): Path to pre-trained weights.
                 Defaults to None.
         """
+
         super(EncoderDecoder_LOCAL8x8, self).init_weights(pretrained)
         self.backbone.init_weights(pretrained=pretrained)
         self.decode_head.init_weights()
@@ -169,62 +170,6 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
 
         return seg_logit
 
-    def forward_dummy2(self, img):
-        """Forward function for training.
-
-        Args:
-            img (Tensor): Input images.
-            img_metas (list[dict]): List of image info dict where each dict
-                has: 'img_shape', 'scale_factor', 'flip', and may also contain
-                'filename', 'ori_shape', 'pad_shape', and 'img_norm_cfg'.
-                For details on the values of these keys see
-                `mmseg/datasets/pipelines/formatting.py:Collect`.
-            gt_semantic_seg (Tensor): Semantic segmentation masks
-                used if the architecture supports semantic segmentation task.
-
-        Returns:
-            dict[str, Tensor]: a dictionary of loss components
-        """
-        self.global_model.eval()
-        with torch.no_grad():
-            global_features = self.global_model.inference_global_feature(img).detach()
-        batch_size, _, h_img, w_img = img.size()
-        h_encode = w_encode = int (20 * (h_img/self.backbone.img_size))
-        self.h_crop = self.w_crop = self.h_stride = self.w_stride = self.backbone.img_size
-        h_grids = max(h_img - self.h_crop + self.h_stride - 1, 0) // self.h_stride + 1
-        w_grids = max(w_img - self.w_crop + self.w_stride - 1, 0) // self.w_stride + 1
-        preds1 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds2 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds3 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds4 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds5 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds6 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds7 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        preds8 = img.new_zeros((batch_size, 256, h_encode, w_encode))
-        count_mat = img.new_zeros((batch_size, 1, h_encode, w_encode))
-        for h_idx in range(h_grids):
-            for w_idx in range(w_grids):
-                y1 = h_idx * self.h_stride
-                x1 = w_idx * self.w_stride
-                y2 = min(y1 + self.h_crop, h_img)
-                x2 = min(x1 + self.w_crop, w_img)
-                y1 = max(y2 - self.h_crop, 0)
-                x1 = max(x2 - self.w_crop, 0)
-                crop_img = img[:, :, y1:y2, x1:x2]
-                crop_seg_logit = self.extract_feat(crop_img)
-                preds1[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[0]
-                preds2[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[1]
-                preds3[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[2]
-                preds4[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[3]
-                preds5[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[4]
-                preds6[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[5]
-                preds7[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[6]
-                preds8[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[7]
-                count_mat[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] += 1
-        assert (count_mat == 0).sum() == 0
-        x = (preds1,preds2,preds3,preds4,preds5,preds6,preds7,preds8)
-        return x
-
     def forward_train(self, img, img_metas, gt_semantic_seg):
         """Forward function for training.
 
@@ -278,8 +223,7 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
                 preds8[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[7]
                 count_mat[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] += 1
         assert (count_mat == 0).sum() == 0
-        x = (preds1,preds2,preds3,preds4,preds5,preds6,preds7,preds8)
-
+        x = (preds1, preds2, preds3, preds4, preds5, preds6, preds7, preds8)
         losses = dict()
         loss_decode, local_features = self._decode_head_forward_train(x, img_metas,gt_semantic_seg)
         losses.update(loss_decode)
@@ -324,7 +268,6 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
                 preds2[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[1]
                 preds3[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[2]
                 preds4[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[3]
-                #count_mat[:, :, int(y1 / 4):int(y2 / 4), int(x1 / 4):int(x2 / 4)] += 1
                 count_mat[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] += 1
         assert (count_mat == 0).sum() == 0
         x = (preds1, preds2, preds3, preds4)
@@ -366,7 +309,6 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
                 preds2[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[1]
                 preds3[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[2]
                 preds4[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] = crop_seg_logit[3]
-                #count_mat[:, :, int(y1 / 4):int(y2 / 4), int(x1 / 4):int(x2 / 4)] += 1
                 count_mat[:, :, int(y1 / 8):int(y2 / 8), int(x1 / 8):int(x2 / 8)] += 1
         assert (count_mat == 0).sum() == 0
         x = (preds1, preds2, preds3, preds4)
@@ -386,7 +328,7 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
         #img_crop = img[:, :, 0:h_img - 1, :]   # for NYUD
         batch_size, _, h_crop_img, w_crop_img = img_crop.size()
 
-        global_features_crop = self.global_model.slide_inference_global_features(img_crop,img_meta, rescale).detach()
+        global_features_crop = self.global_model.slide_inference_global_features(img_crop, img_meta, rescale).detach()
 
         h_stride, w_stride = self.test_cfg.stride
         h_crop, w_crop = self.test_cfg.crop_size
@@ -434,7 +376,16 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
 
         fuse_outs = torch.zeros((batch_size,num_classes, h_img, w_img))
         fuse_outs[:, :, 0:h_img - 1, 0:w_img - 1] = fuse_outs_crop    # for BSDS500
-        #fuse_outs[:, :, 0:h_img - 1, :] = fuse_outs_crop   # for NYUD
+        #fuse_outs[:, :, 0:h_img - 1, :] = fuse_outs_crop    # for NYUD
+        '''
+        if rescale:
+            fuse_outs = resize(
+                fuse_outs,
+                size=img_meta[0]['ori_shape'][:2],
+                mode='bilinear',
+                align_corners=self.align_corners,
+                warning=False)
+        '''
         return fuse_outs
 
     def slide_inference2(self, img, img_meta, rescale):
@@ -526,8 +477,6 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
         ori_shape = img_meta[0]['ori_shape']
         assert all(_['ori_shape'] == ori_shape for _ in img_meta)
         if self.test_cfg.mode == 'slide':
-            #crop_h, crop_w = img.size(2), img.size(3)
-            #img = img[:, :, 0:crop_h - 1, 0:crop_w - 1]
             seg_logit = self.slide_inference(img, img_meta, rescale)
         else:
             seg_logit = self.whole_inference(img, img_meta, rescale)
@@ -557,25 +506,8 @@ class EncoderDecoder_LOCAL8x8(BaseSegmentor):
         #seg_pred = list(seg_pred)
         return seg_pred
 
-    def aug_test2(self, imgs, img_metas, rescale=True):
-        assert rescale
-
-        batch_size, _, h_img, w_img = imgs[0].size()
-        img0_crop = imgs[0]
-        seg_logit = self.slide_inference2(img0_crop, img_metas[0], rescale)
-        for i in range(1, len(imgs)):
-            #img_cur = imgs[i]
-            cur_seg_logit = self.slide_aug_test(imgs[i], img_metas[i], rescale)
-            seg_logit += cur_seg_logit
-
-        seg_logit /= len(imgs)
-
-        seg_pred = seg_logit.cpu().numpy()
-        # unravel batch dim
-        #seg_pred = list(seg_pred)
-        return seg_pred
-
     def aug_test(self, imgs, img_metas, rescale=True):
+        assert rescale
         batch_size, _, h_img, w_img = imgs[0].size()
         seg_logit = torch.zeros([batch_size, 1, h_img, w_img]).cuda()
         img0_crop = imgs[0][:, :, 0:h_img - 1, 0:w_img - 1]

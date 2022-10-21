@@ -91,6 +91,7 @@ def multi_gpu_test(model, data_loader, tmpdir=None, gpu_collect=False, iterNum =
     """
 
     model.eval()
+    print(tmpdir)
     dataset = data_loader.dataset
     rank, world_size = get_dist_info()
 

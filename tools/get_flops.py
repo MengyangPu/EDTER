@@ -3,18 +3,17 @@ import argparse
 from mmcv import Config
 from mmcv.cnn import get_model_complexity_info
 
-from mmseg.models import build_segmentor,build_segmentor_local8x8
+from mmseg.models import build_segmentor
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a segmentor')
-    parser.add_argument('--config', type=str, default='../configs/bsds2/VIT_BIMLA_320x320_80k_bsds_local8x8_bs_8.py', help='train config file path')
-    parser.add_argument('--global-config', type=str, default='../configs/bsds2/VIT_BIMLA_320x320_80k_bsds_bs_8.py', help='train config file path')
+    parser.add_argument('config', help='train config file path')
     parser.add_argument(
         '--shape',
         type=int,
         nargs='+',
-        default=[320, 320],
+        default=[2048, 1024],
         help='input image size')
     args = parser.parse_args()
     return args
@@ -32,14 +31,13 @@ def main():
         raise ValueError('invalid input shape')
 
     cfg = Config.fromfile(args.config)
-    global_cfg = Config.fromfile(args.global_config)
     cfg.model.pretrained = None
-    #model = build_segmentor(cfg.model, train_cfg=cfg.train_cfg, test_cfg=cfg.test_cfg).cuda()
-    model = build_segmentor_local8x8(cfg.model, train_cfg=cfg.train_cfg, test_cfg=cfg.test_cfg, global_cfg=global_cfg).cuda()
+    model = build_segmentor(
+        cfg.model, train_cfg=cfg.train_cfg, test_cfg=cfg.test_cfg).cuda()
     model.eval()
 
     if hasattr(model, 'forward_dummy'):
-        model.forward = model.forward_dummy2
+        model.forward = model.forward_dummy
     else:
         raise NotImplementedError(
             'FLOPs counter is currently not currently supported with {}'.

@@ -35,7 +35,6 @@ default_cfgs = {
         url='https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth',
         input_size=(3, 384, 384), mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5), crop_pct=1.0,
         pretrained_finetune='pretrain/jx_vit_base_p16_384-83fb41ba.pth'),
-        #pretrained_finetune='../pretrain/jx_vit_base_p16_384-83fb41ba.pth'),
     'vit_base_patch32_384': _cfg(
         url='https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p32_384-830016f5.pth',
         input_size=(3, 384, 384), mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5), crop_pct=1.0),
@@ -44,7 +43,6 @@ default_cfgs = {
         url='https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth',
         input_size=(3, 384, 384), mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5), crop_pct=1.0,
         pretrained_finetune='pretrain/jx_vit_large_p16_384-b3be5167.pth'),
-        #pretrained_finetune='../pretrain/jx_vit_large_p16_384-b3be5167.pth'),
     'vit_large_patch32_384': _cfg(
         url='https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p32_384-9b920ba8.pth',
         input_size=(3, 384, 384), mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5), crop_pct=1.0),
@@ -131,7 +129,6 @@ class Block(nn.Module):
 class PatchEmbed(nn.Module):
     """ Image to Patch Embedding
     """
-
     def __init__(self, img_size=224, patch_size=16, in_chans=3, embed_dim=768):
         super().__init__()
         img_size = to_2tuple(img_size)
@@ -144,13 +141,13 @@ class PatchEmbed(nn.Module):
         self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
 
     def forward(self, x):
-        B, C, H, W = x.shape  # (1,3,512,512)
+        B, C, H, W = x.shape  #(1,3,512,512)
         # FIXME look at relaxing size constraints
         assert H == self.img_size[0] and W == self.img_size[1], \
             f"Input image size ({H}*{W}) doesn't match model ({self.img_size[0]}*{self.img_size[1]})."
 
         # x = F.interpolate(x, size=2*x.shape[-1], mode='bilinear', align_corners=True)
-        x = self.proj(x)  # 1,1024,32,32
+        x = self.proj(x) #1,1024,32,32
         return x
 
 
@@ -158,7 +155,6 @@ class HybridEmbed(nn.Module):
     """ CNN Feature Map Embedding
     Extract feature map from CNN, flatten, project to embedding dim.
     """
-
     def __init__(self, backbone, img_size=224, feature_size=None, in_chans=3, embed_dim=768):
         super().__init__()
         assert isinstance(backbone, nn.Module)
@@ -193,44 +189,33 @@ class HybridEmbed(nn.Module):
 class Conv_BIMLA(nn.Module):
     def __init__(self, in_channels=1024, mla_channels=256, norm_cfg=None):
         super(Conv_BIMLA, self).__init__()
-        self.mla_p2_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False),
-                                        build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_p3_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False),
-                                        build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_p4_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False),
-                                        build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_p5_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False),
-                                        build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-
-        self.mla_p2 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_p3 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_p4 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_p5 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-
-        self.mla_b2 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_b3 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_b4 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
-        self.mla_b5 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False),
-                                    build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p2_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p3_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p4_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p5_1x1 = nn.Sequential(nn.Conv2d(in_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        
+        self.mla_p2 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p3 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p4 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_p5 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        
+        self.mla_b2 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_b3 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_b4 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
+        self.mla_b5 = nn.Sequential(nn.Conv2d(mla_channels, mla_channels, 1, bias=False), build_norm_layer(norm_cfg, mla_channels)[1], nn.ReLU())
 
     def to_2D(self, x):
         n, hw, c = x.shape
-        h = w = int(math.sqrt(hw))
-        x = x.transpose(1, 2).reshape(n, c, h, w)
+        h=w = int(math.sqrt(hw))
+        x = x.transpose(1,2).reshape(n, c, h, w)
         return x
 
     def forward(self, res2, res3, res4, res5):
-        res2 = self.to_2D(res2)  # [1, 1024, 32, 32]
-        res3 = self.to_2D(res3)  # [1, 1024, 32, 32]
-        res4 = self.to_2D(res4)  # [1, 1024, 32, 32]
-        res5 = self.to_2D(res5)  # [1, 1024, 32, 32]
+
+        res2 = self.to_2D(res2)  #[1, 1024, 32, 32]
+        res3 = self.to_2D(res3)  #[1, 1024, 32, 32]
+        res4 = self.to_2D(res4)  #[1, 1024, 32, 32]
+        res5 = self.to_2D(res5)  #[1, 1024, 32, 32]
 
         mla_p5_1x1 = self.mla_p5_1x1(res5)
         mla_p4_1x1 = self.mla_p4_1x1(res4)
@@ -245,7 +230,7 @@ class Conv_BIMLA(nn.Module):
         mla_p4 = self.mla_p4(mla_p4_plus)
         mla_p3 = self.mla_p3(mla_p3_plus)
         mla_p2 = self.mla_p2(mla_p2_plus)
-
+        
         mla_b2_plus = mla_p2_1x1
         mla_b3_plus = mla_b2_plus + mla_p3_1x1
         mla_b4_plus = mla_b3_plus + mla_p4_1x1
@@ -263,14 +248,11 @@ class Conv_BIMLA(nn.Module):
 class VIT_BIMLA_LOCAL8x8(nn.Module):
     """ Vision Transformer with support for patch or hybrid CNN input stage
     """
-
-    def __init__(self, model_name='vit_large_patch16_384', img_size=384, patch_size=16, in_chans=3, embed_dim=1024,
-                 depth=24,
-                 num_heads=16, num_classes=19, mlp_ratio=4., qkv_bias=True, qk_scale=None, drop_rate=0.1,
-                 attn_drop_rate=0.,
-                 drop_path_rate=0., hybrid_backbone=None, norm_layer=partial(nn.LayerNorm, eps=1e-6), norm_cfg=None,
-                 pos_embed_interp=False, random_init=False, align_corners=False, mla_channels=256,
-                 mla_index=(5, 11, 17, 23), **kwargs):
+    def __init__(self, model_name='vit_large_patch16_384', img_size=384, patch_size=16, in_chans=3, embed_dim=1024, depth=24,
+                 num_heads=16, num_classes=19, mlp_ratio=4., qkv_bias=True, qk_scale=None, drop_rate=0.1, attn_drop_rate=0.,
+                 drop_path_rate=0., hybrid_backbone=None, norm_layer=partial(nn.LayerNorm, eps=1e-6), norm_cfg=None, 
+                 pos_embed_interp=False, random_init=False, align_corners=False, mla_channels=256, 
+                 mla_index=(5,11,17,23), **kwargs):
         super(VIT_BIMLA_LOCAL8x8, self).__init__(**kwargs)
         self.model_name = model_name
         self.img_size = img_size
@@ -296,7 +278,7 @@ class VIT_BIMLA_LOCAL8x8(nn.Module):
         self.mla_index = mla_index
 
         self.num_stages = self.depth
-        self.out_indices = tuple(range(self.num_stages))
+        self.out_indices= tuple(range(self.num_stages))
 
         if self.hybrid_backbone is not None:
             self.patch_embed = HybridEmbed(
@@ -306,15 +288,14 @@ class VIT_BIMLA_LOCAL8x8(nn.Module):
                 img_size=self.img_size, patch_size=self.patch_size, in_chans=self.in_chans, embed_dim=self.embed_dim)
         self.num_patches = self.patch_embed.num_patches
 
-        self.cls_token = nn.Parameter(torch.zeros(1, 1, self.embed_dim))  # [1, 1, 1024]
-        self.pos_embed = nn.Parameter(torch.zeros(1, self.num_patches + 1, self.embed_dim))  # [1, 1025, 1024]
+        self.cls_token = nn.Parameter(torch.zeros(1, 1, self.embed_dim))   #[1, 1, 1024]
+        self.pos_embed = nn.Parameter(torch.zeros(1, self.num_patches + 1, self.embed_dim))  #[1, 1025, 1024]
         self.pos_drop = nn.Dropout(p=self.drop_rate)
 
         dpr = [x.item() for x in torch.linspace(0, self.drop_path_rate, self.depth)]  # stochastic depth decay rule
         self.blocks = nn.ModuleList([
             Block(
-                dim=self.embed_dim, num_heads=self.num_heads, mlp_ratio=self.mlp_ratio, qkv_bias=self.qkv_bias,
-                qk_scale=self.qk_scale,
+                dim=self.embed_dim, num_heads=self.num_heads, mlp_ratio=self.mlp_ratio, qkv_bias=self.qkv_bias, qk_scale=self.qk_scale,
                 drop=self.drop_rate, attn_drop=self.attn_drop_rate, drop_path=dpr[i], norm_layer=self.norm_layer)
             for i in range(self.depth)])
 
@@ -326,8 +307,8 @@ class VIT_BIMLA_LOCAL8x8(nn.Module):
         self.norm_3 = norm_layer(self.embed_dim)
 
         # NOTE as per official impl, we could have a pre-logits representation dense layer + tanh here
-        # self.repr = nn.Linear(embed_dim, representation_size)
-        # self.repr_act = nn.Tanh()
+        #self.repr = nn.Linear(embed_dim, representation_size)
+        #self.repr_act = nn.Tanh()
 
         trunc_normal_(self.pos_embed, std=.02)
         trunc_normal_(self.cls_token, std=.02)
@@ -336,7 +317,7 @@ class VIT_BIMLA_LOCAL8x8(nn.Module):
     def init_weights(self, pretrained=None):
         # nn.init.normal_(self.pos_embed, std=0.02)
         # nn.init.zeros_(self.cls_token)
-
+        
         for m in self.modules():
             if isinstance(m, nn.Linear):
                 trunc_normal_(m.weight, std=.02)
@@ -350,13 +331,9 @@ class VIT_BIMLA_LOCAL8x8(nn.Module):
             self.default_cfg = default_cfgs[self.model_name]
 
             if self.model_name in ['vit_small_patch16_224', 'vit_base_patch16_224']:
-                load_pretrained(self, num_classes=self.num_classes, in_chans=self.in_chans,
-                                pos_embed_interp=self.pos_embed_interp, num_patches=self.patch_embed.num_patches,
-                                align_corners=self.align_corners, filter_fn=self._conv_filter)
+                load_pretrained(self, num_classes=self.num_classes, in_chans=self.in_chans, pos_embed_interp=self.pos_embed_interp, num_patches=self.patch_embed.num_patches, align_corners=self.align_corners, filter_fn=self._conv_filter)
             else:
-                load_pretrained_local(self, num_classes=self.num_classes, in_chans=self.in_chans,
-                                      pos_embed_interp=self.pos_embed_interp, num_patches=self.patch_embed.num_patches,
-                                      align_corners=self.align_corners)
+                load_pretrained_local(self, num_classes=self.num_classes, in_chans=self.in_chans, pos_embed_interp=self.pos_embed_interp, num_patches=self.patch_embed.num_patches, align_corners=self.align_corners)
         else:
             print('Initialize weight randomly')
 
@@ -374,28 +351,28 @@ class VIT_BIMLA_LOCAL8x8(nn.Module):
         return out_dict
 
     def forward(self, x):
-        B = x.shape[0]  # B=1
-        x = self.patch_embed(x)  # [1, 1024, 32, 32]
-        x = x.flatten(2).transpose(1, 2)  # ([1, 1024, 1024])
+        B = x.shape[0] #B=1
+        x = self.patch_embed(x) #[1, 1024, 32, 32]
+        x = x.flatten(2).transpose(1, 2) #([1, 1024, 1024])
 
         cls_tokens = self.cls_token.expand(B, -1, -1)  # stole cls_tokens impl from Phil Wang, thanks [1, 1, 1024]
-        x = torch.cat((cls_tokens, x), dim=1)  # [1, 1025, 1024]
-        x = x + self.pos_embed  # [1, 1025, 1024]
-        x = x[:, 1:]  # [1, 1024, 1024]
+        x = torch.cat((cls_tokens, x), dim=1)  #[1, 1025, 1024]
+        x = x + self.pos_embed  #[1, 1025, 1024]
+        x = x[:,1:]   #[1, 1024, 1024]
         x = self.pos_drop(x)
-
-        outs = []  # len(outs) = 24
+              
+        outs = []  #len(outs) = 24
         for i, blk in enumerate(self.blocks):
             x = blk(x)
             if i in self.out_indices:
                 outs.append(x)
 
-        c6 = self.norm_0(outs[self.mla_index[0]])  # [1, 1024, 1024] mla_index=(5, 11, 17, 23)
-        c12 = self.norm_1(outs[self.mla_index[1]])  # [1, 1024, 1024]
-        c18 = self.norm_2(outs[self.mla_index[2]])  # [1, 1024, 1024]
-        c24 = self.norm_3(outs[self.mla_index[3]])  # [1, 1024, 1024]
-
+        c6 = self.norm_0(outs[self.mla_index[0]])   #[1, 1024, 1024] mla_index=(5, 11, 17, 23)
+        c12 = self.norm_1(outs[self.mla_index[1]])  #[1, 1024, 1024]
+        c18 = self.norm_2(outs[self.mla_index[2]])  #[1, 1024, 1024]
+        c24 = self.norm_3(outs[self.mla_index[3]])  #[1, 1024, 1024]
+        
         b6, b12, b18, b24, p6, p12, p18, p24 = self.mla(c6, c12, c18, c24)
-
+        
         return (b6, b12, b18, b24, p6, p12, p18, p24)
 

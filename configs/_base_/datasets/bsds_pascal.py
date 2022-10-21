@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'BSDSDataset'
-data_root = 'data/BSDS'#data_root = '../data/BSDS'
+data_root = 'data/BSDS'
 img_norm_cfg = dict(
     mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], to_rgb=True)
 crop_size = (320, 320)
@@ -37,21 +37,21 @@ data = dict(
     train=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='',
-        ann_dir='',
-        split='ImageSets/pascal_train_pair.txt',
+        img_dir='/home/pumengyang/Data/BSDS/train/',
+        ann_dir='/home/pumengyang/Data/BSDS/train/',
+        split='ImageSets/bsds_pascal_train_pair.txt',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='',
-        ann_dir='',
+        img_dir='/home/pumengyang/Data/BSDS/train/',
+        ann_dir='/home/pumengyang/Data/BSDS/train/',
         split='ImageSets/test.txt',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
-        img_dir='',
-        ann_dir='',
+        img_dir='/home/pumengyang/Data/BSDS/train/',
+        ann_dir='/home/pumengyang/Data/BSDS/train/',
         split='ImageSets/test.txt',
         pipeline=test_pipeline))

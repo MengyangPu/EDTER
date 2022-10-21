@@ -264,7 +264,7 @@ class EncoderDecoder(BaseSegmentor):
         ori_shape = img_meta[0]['ori_shape']
         assert all(_['ori_shape'] == ori_shape for _ in img_meta)
         if self.test_cfg.mode == 'slide':
-            #crop_h, crop_w = img.size(2), img.size(3)
+	    #crop_h, crop_w = img.size(2), img.size(3)
             #img = img[:, :, 0:crop_h - 1, 0:crop_w - 1]
             seg_logit = self.slide_inference(img, img_meta, rescale)
         else:
@@ -359,10 +359,11 @@ class EncoderDecoder(BaseSegmentor):
         h_stride, w_stride = self.test_cfg.stride
         h_crop, w_crop = self.test_cfg.crop_size
         batch_size, _, h_img, w_img = img.size()
+        num_classes = self.num_classes
         h_grids = max(h_img - h_crop + h_stride - 1, 0) // h_stride + 1
         w_grids = max(w_img - w_crop + w_stride - 1, 0) // w_stride + 1
-        preds = img.new_zeros((batch_size, 128, h_img, w_img))   # for BSDS500
-        #preds = img.new_zeros((batch_size, 64, h_img, w_img))   # for NYUD
+        preds = img.new_zeros((batch_size, 128, h_img, w_img))     #for BSDS500
+        #preds = img.new_zeros((batch_size, 64, h_img, w_img))     #for NYUvV2
         count_mat = img.new_zeros((batch_size, 1, h_img, w_img))
         for h_idx in range(h_grids):
             for w_idx in range(w_grids):

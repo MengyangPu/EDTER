@@ -96,4 +96,4 @@ lr_config = dict(policy='poly', power=0.9, min_lr=1e-8, by_epoch=False)
 
 test_cfg = dict(mode='slide', crop_size=(320, 320), stride=(280, 280))
 find_unused_parameters = True
-data = dict(samples_per_gpu=2)
+data = dict(samples_per_gpu=1)

@@ -53,7 +53,7 @@ class BIMLAHead(nn.Module):
 class VIT_BIMLAHead(BaseDecodeHead):
     """ Vision Transformer with support for patch or hybrid CNN input stage
     """
-    def __init__(self, img_size=768, mla_channels=256, mlahead_channels=128,
+    def __init__(self, img_size=768, mla_channels=256, mlahead_channels=128, 
                 norm_layer=nn.BatchNorm2d, norm_cfg=None, **kwargs):
         super(VIT_BIMLAHead, self).__init__(**kwargs)
         self.img_size = img_size

@@ -1,9 +1,9 @@
 from .compose import Compose
 from .formating import (Collect, ImageToTensor, ToDataContainer, ToTensor,
                         Transpose, to_tensor)
-from .loading import LoadAnnotations, LoadImageFromFile, LoadAnnotationsMulticueEdge,LoadAnnotationsMulticueBoundary, LoadAnnotationsHD5
+from .loading import LoadAnnotations, LoadImageFromFile, LoadAnnotationsMulticueEdge,LoadAnnotationsMulticueBoundary
 from .test_time_aug import MultiScaleFlipAug
-from .transforms import (Normalize, Pad, PhotoMetricDistortion, RandomCrop, RandomCropTrainHD5,
+from .transforms import (Normalize, Pad, PhotoMetricDistortion, RandomCrop,
                          RandomFlip, Resize, SegRescale)
 
 __all__ = [
@@ -11,5 +11,5 @@ __all__ = [
     'Transpose', 'Collect', 'LoadAnnotations', 'LoadImageFromFile',
     'MultiScaleFlipAug', 'Resize', 'RandomFlip', 'Pad', 'RandomCrop',
     'Normalize', 'SegRescale', 'PhotoMetricDistortion', 'LoadAnnotationsMulticueEdge',
-    'LoadAnnotationsMulticueBoundary', 'LoadAnnotationsHD5', 'RandomCropTrainHD5'
+    'LoadAnnotationsMulticueBoundary'
 ]

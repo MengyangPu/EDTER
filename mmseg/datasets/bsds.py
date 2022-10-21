@@ -22,4 +22,6 @@ class BSDSDataset(CustomDataset):
             seg_map_suffix='.png',
             split=split, **kwargs
         )
+        #print(self.img_dir)
+        #print(self.split)
         assert osp.exists(self.img_dir) and self.split is not None

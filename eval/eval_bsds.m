@@ -1,9 +1,9 @@
 % Command to run.
 % (echo "data_dir = '../output/epoch-x-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
-clc
-clear
+%clc
+%clear
 % Data directory data_dir should be defined outside.
-data_dir = '/your results/';
+%data_dir = '/home/zhoucaixia/EDTER3/work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8_64/10000';
 fprintf('Data dir: %s\n', data_dir);
 addpath(genpath('./edges'));
 addpath(genpath('./toolbox.badacost.public'));
@@ -37,7 +37,8 @@ end
 
 % Section 2: Evaluate the edges (formerly EvalEdge.m from HED repo).
 disp('Evaluate the edges...');
-gtDir  = '../BSDS/testfg';
+%gtDir  = '/data4/zhoucaixia/multicue/ground-truth/boundaries/test2/';
+gtDir= '/home/zhoucaixia/HED-BSDS/groundTruth/test';
 resDir = fullfile(data_dir, 'nms');
 edgesEvalDir('resDir',resDir,'gtDir',gtDir, 'thin', 1, 'pDistr',{{'type','parfor'}},'maxDist',0.0075);
 

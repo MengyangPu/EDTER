@@ -317,7 +317,7 @@ class BaseDecodeHead(nn.Module, metaclass=ABCMeta):
     def losses(self, seg_logit, seg_label):
         """Compute segmentation loss."""
         loss = dict()
-        #seg_logit = resize(input=seg_logit,size=seg_label.shape[2:],mode='bilinear',align_corners=self.align_corners)
+        seg_logit = resize(input=seg_logit,size=seg_label.shape[2:],mode='bilinear',align_corners=self.align_corners)
         if self.sampler is not None:
             seg_weight = self.sampler.sample(seg_logit, seg_label)
         else:

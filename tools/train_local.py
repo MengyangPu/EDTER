@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument(
         '--load-from', help='the checkpoint file to load weights from')
     parser.add_argument(
-        '--resume-from', #type=str, default='/...../work_dirs/.pth',
+        '--resume-from', #type=str, default='/...../work_dirs/XXXXXXXX.pth',
         help='the checkpoint file to resume from')
     parser.add_argument(
         '--no-validate',

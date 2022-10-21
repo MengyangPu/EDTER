@@ -28,8 +28,8 @@ __all__ = [
     'FCNHead', 'PSPHead', 'ASPPHead', 'PSAHead', 'NLHead', 'GCHead', 'CCHead',
     'UPerHead', 'DepthwiseSeparableASPPHead', 'ANNHead', 'DAHead', 'OCRHead',
     'EncHead', 'DepthwiseSeparableFCNHead', 'FPNHead', 'EMAHead', 'DNLHead',
-    'PointHead', 'VisionTransformerUpHead', 'VIT_BIMLA_AUXIHead',
+    'PointHead', 'VisionTransformerUpHead', 'VIT_BIMLA_AUXIHead', 
     'VIT_BIMLA_AUXIHead_LOCAL8x8', 'Local8x8_fuse_head',
-    'VIT_BIMLAHead','VIT_BIMLAHead_LOCAL8x8'
+    'VIT_BIMLAHead', 'VIT_BIMLAHead_LOCAL8x8'
 ]
 

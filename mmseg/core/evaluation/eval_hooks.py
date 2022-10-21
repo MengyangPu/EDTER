@@ -76,7 +76,6 @@ class DistEvalHook(EvalHook):
         multi_gpu_test(
             runner.model,
             self.dataloader,
-            #tmpdir=osp.join(runner.work_dir, '.eval_hook'),
             tmpdir=osp.join(runner.work_dir),
             gpu_collect=self.gpu_collect,
             iterNum = self.iter_num)
