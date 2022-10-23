@@ -9,7 +9,7 @@ Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blo
 
 ### Datasets
 #### BSDS500
-Download the augmented BSDS500 data (1.2GB) from [here](http://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
+Download the augmented BSDS500 data (1.2GB) from [here](http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz).<br/>
 ```
 |-- data
     |-- BSDS
