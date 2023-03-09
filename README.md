@@ -57,8 +57,8 @@ Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5
             ......
 ```
 
-### Pre-trained model
-If you are unable to download due to network reasons, you can download the pre-trained model from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
+### inital weights
+If you are unable to download due to network reasons, you can download the inital weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
 
 ### Training
 #### The training of Stage I
