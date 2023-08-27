@@ -7,6 +7,18 @@ Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blo
 
 ## Usage
 
+### Linux
+The full script for setting up EDTER with conda is following [here](https://github.com/fudan-zvg/SETR).
+```
+conda create -n edter python=3.7 -y
+conda activate edter
+conda install pytorch=1.6.0 torchvision cudatoolkit=10.1 -c pytorch -y
+pip install mmcv-full==1.2.2 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
+cd EDTER
+pip install -e .  # or "python setup.py develop"
+pip install -r requirements/optional.txt
+```
+
 ### Datasets
 #### BSDS500
 Download the augmented BSDS500 data (1.2GB) from [here](http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz).<br/>
