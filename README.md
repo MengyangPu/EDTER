@@ -128,8 +128,8 @@ If you want to compare your method with EDTER, you can download the precomputed 
 |[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA)  (Code:p7wu)  |
 
 ### Important notes
-All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
-Training on distributed GPUs is not supported.
+- All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
+- Training on distributed GPUs is not supported.
 
 ## Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
