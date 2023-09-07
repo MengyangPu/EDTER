@@ -99,7 +99,7 @@ Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5
 ```
 
 
-### inital weights
+### initial weights
 If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).
 The two .pth files of initial weights should be placed in the [folder](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
 ```
@@ -110,20 +110,26 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 ```
 
 ### Training
+Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine.
 #### The training of Stage I
-If you want to set the bach size in each GPU, please refer to
+If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/d37c1d1f664264bdab26e41b6a7c05fb7262fb37/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
+For example, data = dict(samples_per_gpu=1) means that each GPU processes 1 image.
+Therefore, the batch size of training = samples_per_gpu * GPU_NUM. In the experiments, we set the training batch size to 8, where samples_per_gpu=2 and GPU_NUM=2.
 
+The command to train the first-stage model is as follows
 ```shell
-./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
-# For example, train Stage I on BSDS500 dataset with 8 GPUs
-./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 8
+cd EDTER
+bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
+# For example, train Stage I on the BSDS500 dataset with 2 GPUs
+cd EDTER
+./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
 ```
 #### The training of Stage II
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
 ```shell
 ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM} 
-# For example, train Stage II on BSDS500 dataset with 8 GPUs
+# For example, train Stage II on the BSDS500 dataset with 8 GPUs
 ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 8
 ```
 
