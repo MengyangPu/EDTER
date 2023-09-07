@@ -7,6 +7,8 @@ Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blo
 
 ## Usage
 
+Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
+
 ### Linux
 The full script for setting up EDTER with conda is following [here](https://github.com/fudan-zvg/SETR).
 ```
@@ -40,8 +42,35 @@ Download the augmented BSDS500 data (1.2GB) from [here](http://www.eecs.berkeley
         |   |-- 2018.jpg
         ......
 ```
+
+#### PASCAL VOC
+Download the augmented PASCAL VOC data from [here]( https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
+(Code:83cv).
+
+```
+|-- data
+    |-- PASCAL
+        |-- ImageSets
+        |   |-- pascal_train_pair.txt
+        |   |-- test.txt
+        |-- aug_data
+            |-- 0.0_0
+            |   |-- 2008_000002.jpg
+            ......
+            |-- 0.0_1
+            |   |-- 2008_000002.jpg
+            ......
+        |-- aug_gt
+            |-- 0.0_0
+            |   |-- 2008_000002.png
+            ......
+            |-- 0.0_1
+            |   |-- 2008_000002. png
+            ......
+```
+
 #### NYUD
-Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg)(Code:t2ce).<br/>
+Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg?pwd=t2ce)(Code:t2ce).<br/>
 ```
 |-- data
     |-- NYUD
@@ -69,11 +98,22 @@ Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5
             ......
 ```
 
+
 ### inital weights
-If you are unable to download due to network reasons, you can download the inital weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth).
+If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).
+The two .pth files of initial weights should be placed in the [folder](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
+```
+|-- EDTER
+    |-- pretrain
+        |-- jx_vit_base_p16_384-83fb41ba.pth
+        |-- jx_vit_large_p16_384-b3be5167.pth
+```
 
 ### Training
 #### The training of Stage I
+If you want to set the bach size in each GPU, please refer to
+https://github.com/MengyangPu/EDTER/blob/d37c1d1f664264bdab26e41b6a7c05fb7262fb37/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
+
 ```shell
 ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
 # For example, train Stage I on BSDS500 dataset with 8 GPUs
