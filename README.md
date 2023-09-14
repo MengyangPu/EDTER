@@ -23,7 +23,7 @@ pip install -r requirements/optional.txt
 
 ### Datasets
 #### BSDS500
-Download the augmented BSDS500 data (1.2GB) from [here](http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/BSR/BSR_bsds500.tgz).<br/>
+Download the augmented BSDS500 data (1.2GB) from [here](https://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
 ```
 |-- data
     |-- BSDS
