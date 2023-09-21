@@ -163,7 +163,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py 2
 ```
-#### Step2: The training of Stage II on BSDS500
+#### Step3: The training of Stage II on BSDS500
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 Note: According to the results in stage one, we select the best model as the global model. 
@@ -181,10 +181,16 @@ cd EDTER
 ```
 
 ### Testing
-#### Single-scale testing
-Change the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
+#### Stage I with single-scale testing
+First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
+For example:
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L22
+https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
+Then, please to execute the command:
 ```shell
-python tools/test.py
+cd EDTER
+python ./tools/test.py
 ```
 
 #### Multi-scale testing
