@@ -206,7 +206,7 @@ parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_
                         help='the dir of local model')
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L26-L28
 parser.add_argument('--global-checkpoint', type=str,
-                        default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_20000.pth',
+                        default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_30000.pth',
                         help='the dir of global model')
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53-L56
 
