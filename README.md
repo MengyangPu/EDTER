@@ -1,4 +1,4 @@
-![image](https://github.com/MengyangPu/EDTER/assets/26537911/147b251e-781d-4fe1-8b7d-38c8328b73eb)# EDTER
+# EDTER
 > [EDTER: Edge Detection with Transformer](https://arxiv.org/abs/2203.08566)                 
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
