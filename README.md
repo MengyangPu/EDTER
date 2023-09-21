@@ -126,7 +126,8 @@ cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
 ```
 #### Step2: The training of Stage II on BSDS500
-Change the '--global-model-path' in (tools/train_local.py)[https://github.com/MengyangPu/EDTER/blob/cf5ba2bc8e923ac97f760ea974d5502a6c73ff87/tools/train_local.py#L22C22-L23C32).
+Change the '--global-model-path' in tools/train_local.py
+https://github.com/MengyangPu/EDTER/blob/cf5ba2bc8e923ac97f760ea974d5502a6c73ff87/tools/train_local.py#L22C22-L23C32
 ```shell
 cd EDTER
 bash ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM} 
@@ -148,8 +149,8 @@ bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_pascal_bs_8.py 2
 Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
 
 #### Step 2: The training of Stage I on BSDS500
-First, we set the path of the pre-training model in [train.py]( https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
-https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28
+First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28-L29
 For example, parser.add_argument(
         '--load-from', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_pascal_bs_8/iter_X0000.pth ',
         help='the checkpoint file to load weights from')
