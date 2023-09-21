@@ -1,4 +1,4 @@
-# EDTER
+![image](https://github.com/MengyangPu/EDTER/assets/26537911/147b251e-781d-4fe1-8b7d-38c8328b73eb)# EDTER
 > [EDTER: Edge Detection with Transformer](https://arxiv.org/abs/2203.08566)                 
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
@@ -244,6 +244,10 @@ The **reproduced results** of EDTER-Stage I on BSDS500 are shown in the table:
 All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
 
 #### The results of EDTER-Stage II on BSDS500
+The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER) are as:
+|    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
+| ------------| ---- | ---- | ---- | ---- | ---- | ---- |
+|EDTER-StageII|0.824 |0.841 |0.880 |0.840 |0.858 |0.896 |
 
 The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
@@ -260,6 +264,8 @@ The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).
 
 #### The results of EDTER-VOC-Stage I on BSDS500
+The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) are **null**.
+
 The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
@@ -275,6 +281,13 @@ The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the tabl
 All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).
 
 #### The results of EDTER-VOC-Stage II on BSDS500
+The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER-VOC) are as:
+|    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
+| ------------| ---- | ---- | ---- | ---- | ---- | ---- |
+|EDTER-VOC-Stage II|0.832 |0.847 |0.886 |0.848 |0.865 |0.906 |
+
+
+
 The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
