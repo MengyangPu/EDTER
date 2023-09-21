@@ -111,7 +111,7 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 
 ### Training 
 Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine.
-#### Step1: The training of Stage I on BSDS500
+#### Step1: The training of EDTER-Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
 For example, data = dict(samples_per_gpu=4) means that each GPU can process 4 images.
@@ -125,7 +125,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
 ```
-#### Step2: The training of Stage II on BSDS500
+#### Step2: The training of EDTER-Stage II on BSDS500
 Change the '--global-model-path' in tools/train_local.py 
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 ```shell
@@ -136,7 +136,7 @@ cd EDTER
 bash ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 2
 ```
 ### How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context)
-#### Step 1: The training of Stage I on PASCAL VOC Context
+#### Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
 We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
 The command to train the first stage model on PASCAL VOC Context is as follows
 ```shell
@@ -148,7 +148,7 @@ bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_pascal_bs_8.py 2
 ```
 Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
 
-#### Step 2: The training of Stage I on BSDS500
+#### Step 2: The training of EDTER-VOC-Stage I on BSDS500
 First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28-L30
 For example, parser.add_argument(
@@ -163,7 +163,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py 2
 ```
-#### Step3: The training of Stage II on BSDS500
+#### Step3: The training of EDTER-VOC-Stage II on BSDS500
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 Note: According to the results in stage one, we select the best model as the global model. 
@@ -193,6 +193,10 @@ cd EDTER
 python ./tools/test.py
 ```
 #### EDTER-Stage I with multi-scale testing
+
+#### EDTER-Stage II with single-scale testing
+
+#### EDTER-Stage II with multi-scale testing
 First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
 For example:
 https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L20-L21
@@ -206,7 +210,7 @@ parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_
                         help='the dir of local model')
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L26-L28
 parser.add_argument('--global-checkpoint', type=str,
-                        default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_30000.pth',
+                        default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_20000.pth',
                         help='the dir of global model')
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53-L56
 
@@ -217,14 +221,14 @@ cd EDTER
 python ./tools/test_local.py
 ```
 #### The original results v.s. The reproduced results
-
-The original results reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
+##### The results of EDTER-Stage I on BSDS500
+The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
 |   Model    | ODS  | OIS  | AP   |
 | -----------| ---- | ---- | ---- |
-|EDTER-StageI|0.817 |0.835 |0.867 |
+|EDTER-StageI(SS)|0.817 |0.835 |0.867 |
 
-The reproduced results are shown in the table:
-|   iter   | ODS  | OIS  | AP   | ODS  | OIS  | AP   |
+The **reproduced results** of EDTER-Stage I on BSDS500 are shown in the table:
+|   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
 | 10k	   |0.813 |	0.830|0.861	|0.837 |0.854 | 0.890|
 | 20k	   |0.816 |	0.832|0.865	|0.837 |0.853 |	0.889|
@@ -235,15 +239,19 @@ The reproduced results are shown in the table:
 | 70k	   |0.813 |	0.829|0.864	|0.832 |0.849 |	0.884|
 | 80k	   |0.813 |	0.829|0.863	|0.831 |0.849 |	0.884|
 
-All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through this [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
+**SS: Single-Scale testing, MS: Multi-Scale testing**
+
+All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
+
+##### The results of EDTER-Stage II on BSDS500
+
+##### The results of EDTER-VOC-Stage I on BSDS500
+
+##### The results of EDTER-VOC-Stage II on BSDS500
 
 
-#### Multi-scale testing
-Change the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).<br/>
-Use the config file ending in _ms.py in configs/EDTER.
-```shell
-python tools/test_local.py
-```
+
+
 ### [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
 #### BSDS500
 ```shell
