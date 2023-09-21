@@ -194,9 +194,11 @@ python ./tools/test.py
 ```
 
 The original results reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
-ODS=0.817, OIS=0.835, AP=0.867
+|   Model    | ODS  | OIS  | AP   |
+| -----------| ---- | ---- | ---- |
+|EDTER-StageI|0.817 |0.835 |0.867 |
 
-
+The reproduced results are shown in the table:
 |   iter   | ODS  | OIS  | AP   | ODS  | OIS  | AP   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
 | 10k	   |0.813 |	0.830|0.861	|0.837 |0.854 | 0.890|
