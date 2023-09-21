@@ -264,7 +264,7 @@ The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).
 
 
-#### The results of EDTER-VOC-Stage I on BSDS500
+#### The EDTER model pre-trained on the PASCAL VOC Context dataset
 On the testing set of BSDS500, we report the results of **the EDTER model pre-trained on the PASCAL VOC Context dataset**, as shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   |
 | ---------| ---- | ---- | ---- |
@@ -302,8 +302,6 @@ The **original results** reported in the [paper](https://arxiv.org/abs/2203.0856
 |    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ------------| ---- | ---- | ---- | ---- | ---- | ---- |
 |EDTER-VOC-Stage II|0.832 |0.847 |0.886 |0.848 |0.865 |0.906 |
-
-
 
 The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
