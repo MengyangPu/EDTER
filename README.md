@@ -126,8 +126,7 @@ cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
 ```
 #### Step2: The training of Stage II on BSDS500
-Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
-https://github.com/MengyangPu/EDTER/blob/846370ece24b9dc8925037853ccfa33d6cadeaa2/tools/train_local.py#L22C27-L23C54
+Change the '--global-model-path' in (tools/train_local.py)[https://github.com/MengyangPu/EDTER/blob/cf5ba2bc8e923ac97f760ea974d5502a6c73ff87/tools/train_local.py#L22C22-L23C32).
 ```shell
 cd EDTER
 bash ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM} 
