@@ -1,4 +1,4 @@
-# EDTER
+![image](https://github.com/MengyangPu/EDTER/assets/26537911/9f048ea5-1639-47db-8c6a-b7db4f4ea8d9)![image](https://github.com/MengyangPu/EDTER/assets/26537911/6a9d962e-df33-45fd-83c9-596d53835ec2)# EDTER
 > [EDTER: Edge Detection with Transformer](https://arxiv.org/abs/2203.08566)                 
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
@@ -187,11 +187,28 @@ For example:
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L22
 https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
-Then, please to execute the command:
+Then, please execute the command:
 ```shell
 cd EDTER
 python ./tools/test.py
 ```
+
+The original results reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
+ODS=0.817, OIS=0.835, AP=0.867
+
+
+|   iter   | ODS  | OIS  | AP   | ODS  | OIS  | AP   |
+| ---------| ---- | ---- | ---- | ---- | ---- | ---- |
+| 10k	   |0.813 |	0.830|0.861	|0.837 |0.854 | 0.890|
+| 20k	   |0.816 |	0.832|0.865	|0.837 |0.853 |	0.889|
+|**30k**   |**0.817**|**0.833**|**0.866**|**0.837**|**0.853**|**0.888**|
+| 40k	   |0.815 |	0.832|0.866	|0.836 |0.853 |	0.888|
+| 50k	   |0.815 |	0.832|0.866	|0.834 |0.852 |	0.887|
+| 60k	   |0.813 |	0.828|0.862	|0.832 |0.849 |	0.885|
+| 70k	   |0.813 |	0.829|0.864	|0.832 |0.849 |	0.884|
+| 80k	   |0.813 |	0.829|0.863	|0.831 |0.849 |	0.884|
+All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through this [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
+
 
 #### Multi-scale testing
 Change the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).<br/>
