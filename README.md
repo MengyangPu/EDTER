@@ -165,9 +165,9 @@ bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py
 ```
 #### Step2: The training of Stage II on BSDS500
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
-https://github.com/MengyangPu/EDTER/blob/846370ece24b9dc8925037853ccfa33d6cadeaa2/tools/train_local.py#L22C27-L23C54
+https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 Note: According to the results in stage one, we select the best model as the global model. 
-Thus we set:
+Thus, we set:
 parser.add_argument('--global-model-path', type=str, default=' ../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_X0000.pth',
                         help='the dir of the best global model').
 
