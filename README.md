@@ -181,7 +181,7 @@ cd EDTER
 ```
 
 ### Testing
-#### Stage I with single-scale testing
+#### EDTER-Stage I with single-scale testing
 First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
 For example:
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
@@ -192,6 +192,31 @@ Then, please execute the command:
 cd EDTER
 python ./tools/test.py
 ```
+#### EDTER-Stage I with multi-scale testing
+First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
+For example:
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L20C36-L21C36
+parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_bs_8_ms.py**',
+                        help='train global config file path')
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L22C24-L23C24
+parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8_ms.py**',
+                        help='train local config file path')
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L24
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8/iter_10000.pth',
+                        help='the dir of local model')
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L26
+parser.add_argument('--global-checkpoint', type=str,
+                        default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_20000.pth',
+                        help='the dir of global model')
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53
+
+Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
+Please execute the command:
+```shell
+cd EDTER
+python ./tools/test_local.py
+```
+#### The original results v.s. The reproduced results
 
 The original results reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
 |   Model    | ODS  | OIS  | AP   |
