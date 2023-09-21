@@ -1,4 +1,4 @@
-# EDTER
+![image](https://github.com/MengyangPu/EDTER/assets/26537911/01ab311e-b85f-476d-872d-3db1f2fb611d)![image](https://github.com/MengyangPu/EDTER/assets/26537911/340ef2f7-c263-4509-89fb-29b4a68df685)![image](https://github.com/MengyangPu/EDTER/assets/26537911/9011759d-2bcb-48e0-b837-159c84cbd868)# EDTER
 > [EDTER: Edge Detection with Transformer](https://arxiv.org/abs/2203.08566)                 
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
@@ -44,7 +44,7 @@ Download the augmented BSDS500 data (1.2GB) from [here](https://vcl.ucsd.edu/hed
 ```
 
 #### PASCAL VOC
-Download the augmented PASCAL VOC data from [here]( https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
+Download the augmented PASCAL VOC data from [here](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
 (Code:83cv).
 
 ```
@@ -111,7 +111,7 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 
 ### Training 
 Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine.
-#### The training of Stage I on BSDS500
+#### Step1: The training of Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
 For example, data = dict(samples_per_gpu=4) means that each GPU can process 4 images.
@@ -123,17 +123,61 @@ cd EDTER
 bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
 # For example, train Stage I on the BSDS500 dataset with 2 GPUs
 cd EDTER
-./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
+bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
 ```
-#### The training of Stage II on BSDS500
+#### Step2: The training of Stage II on BSDS500
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
 https://github.com/MengyangPu/EDTER/blob/846370ece24b9dc8925037853ccfa33d6cadeaa2/tools/train_local.py#L22C27-L23C54
+```shell
+cd EDTER
+bash ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM} 
+# For example, train Stage II on the BSDS500 dataset with 2 GPUs
+cd EDTER
+bash ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 2
+```
+### How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context)
+#### Step 1: The training of Stage I on PASCAL VOC Context
+We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
+The command to train the first stage model on PASCAL VOC Context is as follows
+```shell
+cd EDTER
+bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
+# For example, train Stage I on the PASCAL VOC Context dataset with 2 GPUs
+cd EDTER
+bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_pascal_bs_8.py 2
+```
+Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
+
+#### Step 2: The training of Stage I on BSDS500
+First, we set the path of the pre-training model in [train.py]( https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28
+For example, parser.add_argument(
+        '--load-from', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_pascal_bs_8/iter_X0000.pth ',
+        help='the checkpoint file to load weights from')
+
+Then, we execute the following command to train the first stage model on bsds500:
+```shell
+cd EDTER
+bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM} 
+# For example, train Stage I on the BSDS500 dataset with 2 GPUs
+cd EDTER
+bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py 2
+```
+#### Step2: The training of Stage II on BSDS500
+Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
+https://github.com/MengyangPu/EDTER/blob/846370ece24b9dc8925037853ccfa33d6cadeaa2/tools/train_local.py#L22C27-L23C54
+Note: According to the results in stage one, we select the best model as the global model. 
+Thus we set:
+parser.add_argument('--global-model-path', type=str, default=' ../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_X0000.pth',
+                        help='the dir of the best global model').
+
+Then, the command to train the second stage model is as follows:
 ```shell
 cd EDTER
 ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM} 
 # For example, train Stage II on the BSDS500 dataset with 2 GPUs
 cd EDTER
-./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 2
+./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py 2
 ```
 
 ### Testing
