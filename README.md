@@ -150,7 +150,7 @@ Note: The model trained on the PASCAL VOC Context dataset is used as the initial
 
 #### Step 2: The training of Stage I on BSDS500
 First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
-https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28-L29
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28-L30
 For example, parser.add_argument(
         '--load-from', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_pascal_bs_8/iter_X0000.pth ',
         help='the checkpoint file to load weights from')
