@@ -207,6 +207,7 @@ ODS=0.817, OIS=0.835, AP=0.867
 | 60k	   |0.813 |	0.828|0.862	|0.832 |0.849 |	0.885|
 | 70k	   |0.813 |	0.829|0.864	|0.832 |0.849 |	0.884|
 | 80k	   |0.813 |	0.829|0.863	|0.831 |0.849 |	0.884|
+
 All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through this [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
 
 
