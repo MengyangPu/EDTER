@@ -110,7 +110,7 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 ```
 
 ### Training 
-Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine.
+<font color=Red> **Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine.** </font>
 #### Step1: The training of EDTER-Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
