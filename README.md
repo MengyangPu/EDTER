@@ -41,32 +41,26 @@
 10 Reference
 ```
 ## Issues and Answers
-**🔥Q:** How to change batch_size?
-
+**🔥Q:** How to change batch_size?<br/>
 **🔥A:** **the batch size of training = samples_per_gpu * GPU_NUM**
 If you want to set the batch size=9, please set *samples_per_gpu* in
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
 For example, *data = dict(samples_per_gpu=4)* means that each GPU can process 4 images. If training batch_size=8, please set samples_per_gpu=4 and GPU_NUM=2.
 
-**🔥Q:** KeyError: 'BSDSDataset is not in the dataset registry'.
-
-**🔥A:** 
+**🔥Q:** KeyError: 'BSDSDataset is not in the dataset registry'.<br/>
+**🔥A:** <br/>
 ```
 cd EDTER
 pip install -e .  # or "python setup.py develop"
 pip install -r requirements/optional.txt
 ```
 
-**🔥Q:** Dataset download.
-
+**🔥Q:** Dataset download.<br/>
 **🔥A:** Please refer to 1.2 [Datasets](https://github.com/MengyangPu/EDTER/#12-datasets)
 
-**🔥🔥Q:** Reproduced results.
-
-**🔥🔥A:** Please refer to 4 [The original results v.s. The reproduced results]([https://github.com/MengyangPu/EDTER/#12-datasets](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.
-
-❗Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).
-
+**🔥🔥Q:** Reproduced results.<br/>
+**🔥🔥A:** Please refer to 4 [The original results v.s. The reproduced results]([https://github.com/MengyangPu/EDTER/#12-datasets](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.<br/>
+❗Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).<br/>
 |     Reproduced results   |                 Download             |
 | -------------------------| ------------------------------------ |
 | [EDTER-Stage I](https://github.com/MengyangPu/EDTER/#41-the-results-of-edter-stage-i-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35) |
@@ -115,7 +109,6 @@ Download the augmented BSDS500 data (1.2GB) from [here](https://vcl.ucsd.edu/hed
 #### PASCAL VOC
 Download the augmented PASCAL VOC data from [here](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
 (Code:83cv).
-
 ```
 |-- data
     |-- PASCAL
@@ -169,7 +162,7 @@ Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5
 
 
 ### 1.3 Initial weights
-If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).
+If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).<br/>
 The two .pth files of initial weights should be placed in the [folder](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
 ```
 |-- EDTER
@@ -183,7 +176,7 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 ### 2.1 Step1: The training of EDTER-Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
-For example, *data = dict(samples_per_gpu=4)* means that each GPU can process 4 images.
+For example, *data = dict(samples_per_gpu=4)* means that each GPU can process 4 images.<br/>
 Therefore, **the batch size of training = samples_per_gpu * GPU_NUM**. In the experiments, we set the training batch size to 8, where samples_per_gpu=4 and GPU_NUM=2.
 
 The command to train the first-stage model is as follows
@@ -206,7 +199,7 @@ bash ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.
 ```
 ### 2.3 How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
 ### Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
-We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
+We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv).<br/>
 The command to train the first stage model on PASCAL VOC Context is as follows
 ```shell
 cd EDTER
@@ -215,7 +208,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_pascal_bs_8.py 2
 ```
-❗Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
+❗Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step 2.
 
 ### 2.4 Step 2: The training of EDTER-VOC-Stage I on BSDS500
 First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
@@ -251,8 +244,7 @@ cd EDTER
 
 ## 3 Testing
 ### 3.1 EDTER-Stage I with single-scale testing
-First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
-
+First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).<br/>
 '--config':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
 '--checkpoint':
@@ -274,8 +266,7 @@ cd EDTER
 python ./tools/test.py
 ```
 ### 3.2 EDTER-Stage I with multi-scale testing
-First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
-
+First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).<br/>
 '--config':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
 '--checkpoint':
@@ -300,8 +291,7 @@ python ./tools/test.py
 ```
 
 ### 3.3 EDTER-Stage II with single-scale testing
-First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
-
+First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).<br/>
 '--globalconfig':
 https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L20-L21
 '--config':
@@ -333,8 +323,7 @@ python ./tools/test_local.py
 ```
 
 ### 3.4 EDTER-Stage II with multi-scale testing
-First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
-
+First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).<br/>
 '--globalconfig':
 https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L20-L21
 '--config':
