@@ -6,7 +6,6 @@
 Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blob/main/supp/EDTER-supp.pdf) for more results.
 
 ## Usage
-
 Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
 
 ### Linux
@@ -220,19 +219,19 @@ Please execute the command:
 cd EDTER
 python ./tools/test_local.py
 ```
-### The original results v.s. The reproduced results
+### 🔥🔥The original results v.s. The reproduced results🔥🔥
 #### The results of EDTER-Stage I on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
 |   Model    | ODS  | OIS  | AP   |
 | -----------| ---- | ---- | ---- |
-|EDTER-StageI(SS)|0.817 |0.835 |0.867 |
+|🔥EDTER-StageI(SS)|0.817 |0.835 |0.867 |
 
 The **reproduced results** of EDTER-Stage I on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
 | 10k	   |0.813 |	0.830|0.861	|0.837 |0.854 | 0.890|
 | 20k	   |0.816 |	0.832|0.865	|0.837 |0.853 |	0.889|
-|**30k(best)**   |**0.817**|**0.833**|**0.866**|**0.837**|**0.853**|**0.888**|
+|**🔥30k(best)**   |**0.817**|**0.833**|**0.866**|**0.837**|**0.853**|**0.888**|
 | 40k	   |0.815 |	0.832|0.866	|0.836 |0.853 |	0.888|
 | 50k	   |0.815 |	0.832|0.866	|0.834 |0.852 |	0.887|
 | 60k	   |0.813 |	0.828|0.862	|0.832 |0.849 |	0.885|
@@ -241,13 +240,13 @@ The **reproduced results** of EDTER-Stage I on BSDS500 are shown in the table:
 
 **SS: Single-Scale testing, MS: Multi-Scale testing**
 
-All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).**
 
 #### The results of EDTER-Stage II on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER) are as:
 |    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ------------| ---- | ---- | ---- | ---- | ---- | ---- |
-|EDTER-StageII|0.824 |0.841 |0.880 |0.840 |0.858 |0.896 |
+|🔥EDTER-StageII|0.824 |0.841 |0.880 |0.840 |0.858 |0.896 |
 
 The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
@@ -255,20 +254,20 @@ The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 | 10k	   |0.821 |0.838 |0.874 |0.839 |0.856 |0.893 |
 | 20k	   |0.822 |0.839 |0.876 |0.838 |0.856 |0.893 |
 | 30k	   |0.824 |0.841 |0.878 |0.837 |0.855 |0.893 |
-|**40k(best)**   |**0.825**|**0.841**|**0.880**|**0.838**|**0.855**|**0.894**|
+|**🔥40k(best)**   |**0.825**|**0.841**|**0.880**|**0.838**|**0.855**|**0.894**|
 | 50k	   |0.823 |0.840 |0.877 |0.835 |0.852 |0.892 |
 | 60k	   |0.822 |0.839 |0.876 |0.834 |0.852 |0.889 |
 | 70k	   |0.820 |0.837 |0.875 |0.833 |0.851 |0.890 |
 | 80k	   |0.817 |0.836 |0.873 |0.829 |0.848 |0.888 |
 
-All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).**
 
 
 #### The EDTER model pre-trained on the PASCAL VOC Context dataset
 On the testing set of BSDS500, we report the results of **the EDTER model pre-trained on the PASCAL VOC Context dataset**, as shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   |
 | ---------| ---- | ---- | ---- |
-| **10k(best)**  |**0.775** |**0.795** |**0.835** |
+| **🔥10k(best)**  |**0.775** |**0.795** |**0.835** |
 | 20k      |0.767 |0.788 |0.827 |
 | 30k	   |0.760 |0.777 |0.816 |
 | 40k      |0.762 |0.779 |0.815 |
@@ -277,7 +276,7 @@ On the testing set of BSDS500, we report the results of **the EDTER model pre-tr
 | 70k	   |0.757 |0.771 |0.810 |
 | 80k	   |0.757 |0.771 |0.810 |
 
-All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v).
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v).**
 
 
 #### The results of EDTER-VOC-Stage I on BSDS500
@@ -287,7 +286,7 @@ The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the tabl
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
 | 10k	   |0.823 |0.837 |0.871 |0.845 |0.861 |0.897 |
-|**20k(best)**   |**0.824** |**0.839** |**0.872** |**0.844** |**0.860** |**0.896** |
+|**🔥20k(best)**   |**0.824** |**0.839** |**0.872** |**0.844** |**0.860** |**0.896** |
 | 30k	   |0.822 |0.838 |0.873 |0.842 |0.858 |0.895 |
 | 40k      |0.821 |0.837 |0.871 |0.842 |0.857 |0.893 |
 | 50k	   |0.821 |0.836 |0.870 |0.839 |0.855 |0.891 |
@@ -295,19 +294,19 @@ The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the tabl
 | 70k	   |0.819 |0.835 |0.869 |0.838 |0.854 |0.890 |
 | 80k	   |0.819 |0.834 |0.868 |0.838 |0.854 |0.890 |
 
-All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).**
 
 #### The results of EDTER-VOC-Stage II on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER-VOC) are as:
 |    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ------------| ---- | ---- | ---- | ---- | ---- | ---- |
-|EDTER-VOC-Stage II|0.832 |0.847 |0.886 |0.848 |0.865 |0.906 |
+|🔥EDTER-VOC-Stage II|0.832 |0.847 |0.886 |0.848 |0.865 |0.906 |
 
 The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ---------| ---- | ---- | ---- | ---- | ---- | ---- |
 | 10k	   |0.827 |0.844 |0.880 |0.846 |0.861 |0.900 |
-|**20k(best)**   |**0.829** |**0.845** |**0.883** |**0.846** |**0.862** |**0.901** |
+|**🔥20k(best)**   |**0.829** |**0.845** |**0.883** |**0.846** |**0.862** |**0.901** |
 | 30k	   |0.829 |0.845 |0.883 |0.843 |0.860 |0.899 |
 | 40k      |0.826 |0.842 |0.882 |0.841 |0.858 |0.897 |
 | 50k	   |0.823 |0.838 |0.878 |0.837 |0.854 |0.893 |
@@ -315,7 +314,7 @@ The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the tab
 | 70k	   |0.816 |0.833 |0.872 |0.831 |0.848 |0.888 |
 | 80k	   |0.815 |0.832 |0.871 |0.830 |0.848 |0.887 |
 
-All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).**
 
 
 ### [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
@@ -351,7 +350,7 @@ If you want to compare your method with EDTER, you can download the precomputed 
 
 ## Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
-- Thanks to previous open-sourced repo:<br/>
+- Thanks to the previous open-sourced repo:<br/>
   [SETR](https://github.com/fudan-zvg/SETR)<br/>
   [MMsegmentation](https://github.com/open-mmlab/mmsegmentation)<br/>
 
