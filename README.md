@@ -182,15 +182,18 @@ cd EDTER
 ## Testing
 ### EDTER-Stage I with single-scale testing
 First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
-For example:
+'--config':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
+'--checkpoint':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L22
+'--tmpdir':
 https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
+For example:
 ```shell
-If you want to test EDTER-Stage I, please set:
+#If you want to test EDTER-Stage I, please set:
 parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py', help='train config file path')
 parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8/iter_XXXXX.pth')
-If you want to test EDTER-VOC-Stage I, please set:
+#If you want to test EDTER-VOC-Stage I, please set:
 parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py', help='train config file path')
 parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth')
 ```
