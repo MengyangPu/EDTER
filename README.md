@@ -36,9 +36,9 @@
 5 Eval
 6 Results
 7 Download the Pre-trained model
-8 Important notes
-9 Acknowledgments
-10 Reference
+Important notes
+Acknowledgements
+Reference
 ```
 ## Issues and Answers
 **🔥Q:** How to change batch_size?<br/>
@@ -480,17 +480,17 @@ If you want to compare your method with EDTER, you can download the precomputed 
 |[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A)  (Code:ko2f)  |
 |[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA)  (Code:p7wu)  |
 
-## 8 Important notes
-- All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
-- Training on distributed GPUs is not supported.
+## ❗❗❗Important notes
+- ❗❗❗All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
+- ❗❗❗Training on distributed GPUs is not supported.
 
-## 9 Acknowledgments
+## Acknowledgements
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
 - Thanks to the previous open-sourced repo:<br/>
   [SETR](https://github.com/fudan-zvg/SETR)<br/>
   [MMsegmentation](https://github.com/open-mmlab/mmsegmentation)<br/>
 
-## 10 Reference
+## Reference
 ```bibtex
 @InProceedings{Pu_2022_CVPR,
     author    = {Pu, Mengyang and Huang, Yaping and Liu, Yuming and Guan, Qingji and Ling, Haibin},
