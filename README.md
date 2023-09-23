@@ -5,6 +5,38 @@
 
 Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blob/main/supp/EDTER-supp.pdf) for more results.
 
+## Contents
+```
+1 Usage
+    1.1 Linux
+    1.2 Datasets
+    1.3 Initial weights
+2 Traning
+    2.1 Step1: The training of EDTER-Stage I on BSDS500
+    2.2 Step2: The training of EDTER-Stage II on BSDS500
+    2.3 How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
+        Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
+    2.4 Step2: The training of EDTER-VOC-Stage I on BSDS500
+    2.5 Step3: The training of EDTER-VOC-Stage II on BSDS500
+3 Testing
+    3.1 EDTER-Stage I with single-scale testing
+    3.2 EDTER-Stage I with multi-scale testing
+    3.4 EDTER-Stage II with single-scale testing
+    3.5 EDTER-Stage II with multi-scale testing
+4 🔥🔥The original results v.s. The reproduced results🔥🔥
+    4.1 The results of EDTER-Stage I on BSDS500
+    4.2 The results of EDTER-Stage II on BSDS500
+    4.3 The EDTER model pre-trained on the PASCAL VOC Context dataset
+    4.4 The results of EDTER-VOC-Stage I on BSDS500
+    4.5 The results of EDTER-VOC-Stage II on BSDS500
+5 Eval
+6 Results
+7 Download the Pre-trained model
+8 Important notes
+9 Acknowledgments
+10 Reference
+```
+
 ## Usage
 Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
 
@@ -98,7 +130,7 @@ Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5
 ```
 
 
-### initial weights
+### Initial weights
 If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).
 The two .pth files of initial weights should be placed in the [folder](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
 ```
@@ -134,7 +166,7 @@ bash ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 2
 ```
-## How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context)
+### How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
 ### Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
 We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
 The command to train the first stage model on PASCAL VOC Context is as follows
@@ -190,7 +222,7 @@ https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f
 '--tmpdir':
 https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
 For example:
-```shell
+```
 #If you want to test EDTER-Stage I, please set:
 parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py', help='train config file path')
 parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8/iter_XXXXX.pth')
@@ -213,7 +245,7 @@ https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f
 '--tmpdir':
 https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
 For example:
-```shell
+```
 #If you want to test EDTER-Stage I, please set:
 parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8_ms.py', help='train config file path')
 parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8/iter_XXXXX.pth')
@@ -244,7 +276,7 @@ https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53-L56
 
 For example:
-```shell
+```
 #If you want to test EDTER-Stage II, please set:
 parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_bs_8.py**', help='train global config file path')
 parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py**', help='train local config file path')
@@ -277,7 +309,7 @@ https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53-L56
 
 For example:
-```shell
+```
 #If you want to test EDTER-Stage II, please set:
 parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_bs_8_ms.py**', help='train global config file path')
 parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8_ms.py**', help='train local config file path')
@@ -394,7 +426,7 @@ The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the tab
 **🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).**
 
 
-### [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
+## [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
 #### BSDS500
 ```shell
 cd eval
@@ -407,10 +439,10 @@ cd eval
 run eval_nyud.m
 ```
 
-### Results
+## Results
 If you want to compare your method with EDTER, you can download the precomputed results [BSDS500](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing) and [NYUD](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw)(code:b941).
 
-### Download Pre-trained model.
+## Download Pre-trained model
 
 | model                                            | Pre-trained Model                                                              |
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
@@ -421,7 +453,7 @@ If you want to compare your method with EDTER, you can download the precomputed 
 |[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A)  (Code:ko2f)  |
 |[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA)  (Code:p7wu)  |
 
-### Important notes
+## Important notes
 - All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
 - Training on distributed GPUs is not supported.
 
