@@ -37,10 +37,10 @@ Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blo
 10 Reference
 ```
 
-## Usage
+## 1 Usage
 Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
 
-### Linux
+### 1.1 Linux
 The full script for setting up EDTER with conda is following [here](https://github.com/fudan-zvg/SETR).
 ```
 conda create -n edter python=3.7 -y
@@ -52,7 +52,7 @@ pip install -e .  # or "python setup.py develop"
 pip install -r requirements/optional.txt
 ```
 
-### Datasets
+### 1.2 Datasets
 #### BSDS500
 Download the augmented BSDS500 data (1.2GB) from [here](https://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
 ```
@@ -130,7 +130,7 @@ Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5
 ```
 
 
-### Initial weights
+### 1.3 Initial weights
 If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).
 The two .pth files of initial weights should be placed in the [folder](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
 ```
@@ -140,9 +140,9 @@ The two .pth files of initial weights should be placed in the [folder](https://g
         |-- jx_vit_large_p16_384-b3be5167.pth
 ```
 
-## Training 
+## 2 Training 
 <b><font color=Red> Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine. </font></b>
-### Step1: The training of EDTER-Stage I on BSDS500
+### 2.1 Step1: The training of EDTER-Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
 For example, *data = dict(samples_per_gpu=4)* means that each GPU can process 4 images.
@@ -156,7 +156,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py 2
 ```
-### Step2: The training of EDTER-Stage II on BSDS500
+### 2.2 Step2: The training of EDTER-Stage II on BSDS500
 Change the '--global-model-path' in tools/train_local.py 
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 ```shell
@@ -166,7 +166,7 @@ bash ./tools/dist_train_local.sh ${GLOBALCONFIG_FILE} ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py 2
 ```
-### How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
+### 2.3 How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
 ### Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
 We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
 The command to train the first stage model on PASCAL VOC Context is as follows
@@ -179,7 +179,7 @@ bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_pascal_bs_8.py 2
 ```
 Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
 
-### Step 2: The training of EDTER-VOC-Stage I on BSDS500
+### 2.4 Step 2: The training of EDTER-VOC-Stage I on BSDS500
 First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28-L30
 For example, *parser.add_argument(
@@ -194,7 +194,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py 2
 ```
-### Step3: The training of EDTER-VOC-Stage II on BSDS500
+### 2.5 Step3: The training of EDTER-VOC-Stage II on BSDS500
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 Note: According to the results in stage one, we select the best model as the global model. 
@@ -211,8 +211,8 @@ cd EDTER
 ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py 2
 ```
 
-## Testing
-### EDTER-Stage I with single-scale testing
+## 3 Testing
+### 3.1 EDTER-Stage I with single-scale testing
 First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
 
 '--config':
@@ -235,7 +235,7 @@ Then, please execute the command:
 cd EDTER
 python ./tools/test.py
 ```
-### EDTER-Stage I with multi-scale testing
+### 3.2 EDTER-Stage I with multi-scale testing
 First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
 
 '--config':
@@ -261,7 +261,7 @@ cd EDTER
 python ./tools/test.py
 ```
 
-### EDTER-Stage II with single-scale testing
+### 3.3 EDTER-Stage II with single-scale testing
 First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
 
 '--globalconfig':
@@ -294,7 +294,7 @@ cd EDTER
 python ./tools/test_local.py
 ```
 
-### EDTER-Stage II with multi-scale testing
+### 3.4 EDTER-Stage II with multi-scale testing
 First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
 
 '--globalconfig':
@@ -328,8 +328,8 @@ Please execute the command:
 cd EDTER
 python ./tools/test_local.py
 ```
-## 🔥🔥The original results v.s. The reproduced results🔥🔥
-### The results of EDTER-Stage I on BSDS500
+## 🔥🔥4 The original results v.s. The reproduced results🔥🔥
+### 4.1 The results of EDTER-Stage I on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
 |   Model    | ODS  | OIS  | AP   |
 | -----------| ---- | ---- | ---- |
@@ -351,7 +351,7 @@ The **reproduced results** of EDTER-Stage I on BSDS500 are shown in the table:
 
 **🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).**
 
-### The results of EDTER-Stage II on BSDS500
+### 4.2 The results of EDTER-Stage II on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER) are as:
 |    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ------------| ---- | ---- | ---- | ---- | ---- | ---- |
@@ -372,7 +372,7 @@ The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 **🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).**
 
 
-### The EDTER model pre-trained on the PASCAL VOC Context dataset
+### 4.3 The EDTER model pre-trained on the PASCAL VOC Context dataset
 On the testing set of BSDS500, we report the results of **the EDTER model pre-trained on the PASCAL VOC Context dataset**, as shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   |
 | ---------| ---- | ---- | ---- |
@@ -388,7 +388,7 @@ On the testing set of BSDS500, we report the results of **the EDTER model pre-tr
 **🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v).**
 
 
-### The results of EDTER-VOC-Stage I on BSDS500
+### 4.4 The results of EDTER-VOC-Stage I on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) are **null**.
 
 The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the table:
@@ -405,7 +405,7 @@ The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the tabl
 
 **🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).**
 
-### The results of EDTER-VOC-Stage II on BSDS500
+### 4.5 The results of EDTER-VOC-Stage II on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER-VOC) are as:
 |    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ------------| ---- | ---- | ---- | ---- | ---- | ---- |
@@ -426,7 +426,7 @@ The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the tab
 **🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).**
 
 
-## [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
+## 5 [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
 #### BSDS500
 ```shell
 cd eval
@@ -439,10 +439,10 @@ cd eval
 run eval_nyud.m
 ```
 
-## Results
+## 6 Results
 If you want to compare your method with EDTER, you can download the precomputed results [BSDS500](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing) and [NYUD](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw)(code:b941).
 
-## Download Pre-trained model
+## 7 Download Pre-trained model
 
 | model                                            | Pre-trained Model                                                              |
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
@@ -453,17 +453,17 @@ If you want to compare your method with EDTER, you can download the precomputed 
 |[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A)  (Code:ko2f)  |
 |[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA)  (Code:p7wu)  |
 
-## Important notes
+## 8 Important notes
 - All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
 - Training on distributed GPUs is not supported.
 
-## Acknowledgments
+## 9 Acknowledgments
 - We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
 - Thanks to the previous open-sourced repo:<br/>
   [SETR](https://github.com/fudan-zvg/SETR)<br/>
   [MMsegmentation](https://github.com/open-mmlab/mmsegmentation)<br/>
 
-## Reference
+## 10 Reference
 ```bibtex
 @InProceedings{Pu_2022_CVPR,
     author    = {Pu, Mengyang and Huang, Yaping and Liu, Yuming and Guan, Qingji and Ling, Haibin},
