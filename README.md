@@ -204,28 +204,93 @@ cd EDTER
 python ./tools/test.py
 ```
 ### EDTER-Stage I with multi-scale testing
+First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
+
+'--config':
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
+'--checkpoint':
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L22
+'--tmpdir':
+https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
+For example:
+```shell
+#If you want to test EDTER-Stage I, please set:
+parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8_ms.py', help='train config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8/iter_XXXXX.pth')
+#If you want to test EDTER-VOC-Stage I, please set:
+parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8_ms.py', help='train config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth')
+```
+Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
+
+Then, please execute the command:
+```shell
+cd EDTER
+python ./tools/test.py
+```
 
 ### EDTER-Stage II with single-scale testing
+First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
+
+'--globalconfig':
+https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L20-L21
+'--config':
+https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L22-L23
+'--checkpoint':
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L24-L25
+'--global-checkpoint':
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L26-L28
+'--tmpdir':
+https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53-L56
+
+For example:
+```shell
+#If you want to test EDTER-Stage II, please set:
+parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_bs_8.py**', help='train global config file path')
+parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8.py**', help='train local config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8/iter_XXXXX.pth', help='the dir of local model')
+parser.add_argument('--global-checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8/iter_XXXXX.pth', help='the dir of global model')
+#If you want to test EDTER-VOC-Stage II, please set:
+parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py**', help='train global config file path')
+parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py**', help='train local config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8/iter_XXXXX.pth', help='the dir of local model')
+parser.add_argument('--global-checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth', help='the dir of global model')
+```
+Please execute the command:
+```shell
+cd EDTER
+python ./tools/test_local.py
+```
 
 ### EDTER-Stage II with multi-scale testing
 First, please set the '--globalconfig', '--config', '--global-checkpoint', '--checkpoint', and '--tmpdir' in [test_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test_local.py).
-For example:
+
+'--globalconfig':
 https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L20-L21
-**E.g.** *parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_bs_8_ms.py**',
-                        help='train global config file path')*
+'--config':
 https://github.com/MengyangPu/EDTER/blob/84cc7355c9012a7d31cd14e25fd6c6b336714163/tools/test_local.py#L22-L23
-**E.g.** *parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8_ms.py**',
-                        help='train local config file path')*
+'--checkpoint':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L24-L25
-**E.g.** *parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8/iter_10000.pth',
-                        help='the dir of local model')*
+'--global-checkpoint':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L26-L28
-**E.g.** *parser.add_argument('--global-checkpoint', type=str,
-                        default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_20000.pth',
-                        help='the dir of global model')*
+'--tmpdir':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test_local.py#L53-L56
 
+For example:
+```shell
+#If you want to test EDTER-Stage II, please set:
+parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_bs_8_ms.py**', help='train global config file path')
+parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_local8x8_bs_8_ms.py**', help='train local config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8/iter_XXXXX.pth', help='the dir of local model')
+parser.add_argument('--global-checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth', help='the dir of global model')
+#If you want to test EDTER-VOC-Stage II, please set:
+parser.add_argument('--globalconfig', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_bs_8_ms.py**', help='train global config file path')
+parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8_ms.py**', help='train local config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8/iter_XXXXX.pth', help='the dir of local model')
+parser.add_argument('--global-checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth', help='the dir of global model')
+```
 Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
+
 Please execute the command:
 ```shell
 cd EDTER
