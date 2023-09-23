@@ -182,6 +182,7 @@ cd EDTER
 ## Testing
 ### EDTER-Stage I with single-scale testing
 First, please set the '--config', '--checkpoint', and '--tmpdir' in [test.py](https://github.com/MengyangPu/EDTER/blob/main/tools/test.py).
+
 '--config':
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
 '--checkpoint':
