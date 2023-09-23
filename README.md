@@ -113,8 +113,8 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 ### Step1: The training of EDTER-Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
-For example, data = dict(samples_per_gpu=4) means that each GPU can process 4 images.
-Therefore, the batch size of training = samples_per_gpu * GPU_NUM. In the experiments, we set the training batch size to 8, where samples_per_gpu=4 and GPU_NUM=2.
+For example, *data = dict(samples_per_gpu=4)* means that each GPU can process 4 images.
+Therefore, **the batch size of training = samples_per_gpu * GPU_NUM**. In the experiments, we set the training batch size to 8, where samples_per_gpu=4 and GPU_NUM=2.
 
 The command to train the first-stage model is as follows
 ```shell
@@ -150,9 +150,9 @@ Note: The model trained on the PASCAL VOC Context dataset is used as the initial
 ### Step 2: The training of EDTER-VOC-Stage I on BSDS500
 First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/train.py#L28-L30
-For example, parser.add_argument(
+For example, *parser.add_argument(
         '--load-from', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_pascal_bs_8/iter_X0000.pth ',
-        help='the checkpoint file to load weights from')
+        help='the checkpoint file to load weights from')*
 
 Then, we execute the following command to train the first stage model on bsds500:
 ```shell
@@ -167,8 +167,8 @@ Change the '--global-model-path' in [train_local.py](https://github.com/Mengyang
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
 Note: According to the results in stage one, we select the best model as the global model. 
 Thus, we set:
-parser.add_argument('--global-model-path', type=str, default=' ../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_X0000.pth',
-                        help='the dir of the best global model').
+*parser.add_argument('--global-model-path', type=str, default=' ../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_X0000.pth',
+                        help='the dir of the best global model').*
 
 Then, the command to train the second stage model is as follows:
 ```shell
@@ -186,6 +186,14 @@ For example:
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L21
 https://github.com/MengyangPu/EDTER/blob/3b1751abec5f0add6849393a9cbf2a8e73cc65f5/tools/test.py#L22
 https://github.com/MengyangPu/EDTER/blob/f060fd3c8bf1e5b1c91097721b2eafecc5f3041e/tools/test.py#L47-L50
+```shell
+If you want to test EDTER-Stage I, please set:
+parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py', help='train config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_bs_8/iter_XXXXX.pth')
+If you want to test EDTER-VOC-Stage I, please set:
+parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py', help='train config file path')
+parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth')
+```
 Then, please execute the command:
 ```shell
 cd EDTER
