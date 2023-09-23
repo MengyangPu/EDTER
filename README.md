@@ -62,11 +62,20 @@ pip install -r requirements/optional.txt
 
 **🔥🔥A:** Please refer to 4 [The original results v.s. The reproduced results]([https://github.com/MengyangPu/EDTER/#12-datasets](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.
 Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB.
-[EDTER-Stage I](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35)
-[EDTER-Stage II](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm)
-[EDTER-VOC-Stage I pre-train](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v)
-[EDTER-VOC-Stage I](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv)
-[EDTER-VOC-Stage II](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm)
+[EDTER-Stage I](https://github.com/MengyangPu/EDTER/#41-the-results-of-edter-stage-i-on-bsds500)
+Download all results (~20GB) from [here](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
+
+[EDTER-Stage II](https://github.com/MengyangPu/EDTER/#42-the-results-of-edter-stage-ii-on-bsds500)
+Download all results (~20GB) from [here](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).
+
+[EDTER-VOC-Stage I pre-train](https://github.com/MengyangPu/EDTER/#43-the-edter-model-pre-trained-on-the-pascal-voc-context-dataset)
+Download all results (~20GB) from [here](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v).
+
+[EDTER-VOC-Stage I](https://github.com/MengyangPu/EDTER/#44-the-results-of-edter-voc-stage-i-on-bsds500)
+Download all results (~20GB) from [here](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).
+
+[EDTER-VOC-Stage II](https://github.com/MengyangPu/EDTER/#45-the-results-of-edter-voc-stage-ii-on-bsds500)
+Download all results (~20GB) from [here](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).
 
 
 ## 1 Usage
