@@ -3,12 +3,9 @@
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
 
-**Update**
-
-*More detailed usage*
-
-*Comparison of reproduction results and original results*
-
+**Update**<br/>
+*More detailed usage*<br/>
+*Comparison of reproduction results and original results*<br/>
 *Provide all training logs, including the experimental environment*
 
 ## Contents
