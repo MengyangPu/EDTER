@@ -43,7 +43,7 @@ Reference
 ## Issues and Answers
 **🔥Q:** How to change batch_size?<br/>
 **🔥A:** **the batch size of training = samples_per_gpu * GPU_NUM**
-If you want to set the batch size=9, please set *samples_per_gpu* in
+If you want to set *samples_per_gpu*, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
 For example, *data = dict(samples_per_gpu=4)* means that each GPU can process 4 images. If training batch_size=8, please set samples_per_gpu=4 and GPU_NUM=2.
 
