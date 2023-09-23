@@ -3,11 +3,14 @@
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
 
-Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blob/main/supp/EDTER-supp.pdf) for more results.
+**Update**
+*More detailed usage*
+*Comparison of reproduction results and original results*
+*Provide all training logs, including the experimental environment*
 
 ## Contents
 ```
-0 Issues
+0 Issues and Answers
 1 Usage
     1.1 Linux
     1.2 Datasets
