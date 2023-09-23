@@ -37,7 +37,7 @@ Please refer to [supplementary material](https://github.com/MengyangPu/EDTER/blo
 10 Reference
 ```
 
-## 1 Usage
+## 1 Usage@[toc]
 Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
 
 ### 1.1 Linux
