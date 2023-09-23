@@ -3,7 +3,7 @@
 > Mengyang Pu, Yaping Huang, Yuming Liu, Qingji Guan and Haibin Ling                 
 > *CVPR 2022*
 
-**❗️Update**<br/>
+**🔥Update**<br/>
 *More detailed usage*<br/>
 *Comparison of reproduction results and original results*<br/>
 *Provide all training logs, including the experimental environment*
@@ -65,7 +65,7 @@ pip install -r requirements/optional.txt
 
 **🔥🔥A:** Please refer to 4 [The original results v.s. The reproduced results]([https://github.com/MengyangPu/EDTER/#12-datasets](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.
 
-Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).
+❗Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).
 
 [EDTER-Stage I](https://github.com/MengyangPu/EDTER/#41-the-results-of-edter-stage-i-on-bsds500)
 Download all results (~20GB) from [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
@@ -187,7 +187,7 @@ The two .pth files of initial weights should be placed in the [folder](https://g
 ```
 
 ## 2 Training 
-<b><font color=Red> Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine. </font></b>
+❗❗❗ Note: Our project only supports distributed training on multiple GPUs on one machine or a single GPU on one machine.
 ### 2.1 Step1: The training of EDTER-Stage I on BSDS500
 If you want to set the batch size in each GPU, please refer to
 https://github.com/MengyangPu/EDTER/blob/bbee219d5713a77aeec61c0f7fde93620cb02d60/configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.py#L99
@@ -223,7 +223,7 @@ bash ./tools/dist_train.sh ${CONFIG_FILE} ${GPU_NUM}
 cd EDTER
 bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_pascal_bs_8.py 2
 ```
-Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
+❗Note: The model trained on the PASCAL VOC Context dataset is used as the initialization model in Step2.
 
 ### 2.4 Step 2: The training of EDTER-VOC-Stage I on BSDS500
 First, we set the path of the pre-training model in [train.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train.py)
@@ -243,7 +243,7 @@ bash ./tools/dist_train.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py
 ### 2.5 Step3: The training of EDTER-VOC-Stage II on BSDS500
 Change the '--global-model-path' in [train_local.py](https://github.com/MengyangPu/EDTER/blob/main/tools/train_local.py).
 https://github.com/MengyangPu/EDTER/blob/ccb79b235e82ddbb4a6cc6d36c38325b674decd1/tools/train_local.py#L22-L23
-Note: According to the results in stage one, we select the best model as the global model. 
+❗Note: According to the results in stage one, we select the best model as the global model. 
 Thus, we set:
 *parser.add_argument('--global-model-path', type=str, default=' ../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_X0000.pth',
                         help='the dir of the best global model').*
@@ -299,7 +299,7 @@ parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_
 parser.add_argument('--config', type=str, default='configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8_ms.py', help='train config file path')
 parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth')
 ```
-Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
+❗Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
 
 Then, please execute the command:
 ```shell
@@ -367,7 +367,7 @@ parser.add_argument('--config', type=str, default='configs/bsds/**EDTER_BIMLA_32
 parser.add_argument('--checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8/iter_XXXXX.pth', help='the dir of local model')
 parser.add_argument('--global-checkpoint', type=str, default='../work_dirs/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8/iter_XXXXX.pth', help='the dir of global model')
 ```
-Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
+❗Note: Use the config file ending in **_ms.py** in **configs/EDTER**.
 
 Please execute the command:
 ```shell
