@@ -61,7 +61,9 @@ pip install -r requirements/optional.txt
 **🔥🔥Q:** Reproduced results.
 
 **🔥🔥A:** Please refer to 4 [The original results v.s. The reproduced results]([https://github.com/MengyangPu/EDTER/#12-datasets](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.
+
 Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB.
+
 [EDTER-Stage I](https://github.com/MengyangPu/EDTER/#41-the-results-of-edter-stage-i-on-bsds500)
 Download all results (~20GB) from [here](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).
 
