@@ -87,6 +87,8 @@ pip install -r requirements/optional.txt
 ### 1.2 Datasets
 #### BSDS500
 Download the augmented BSDS500 data (1.2GB) from [here](https://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
+The original BSDS500 dataset can be downloaded from [Berkeley Segmentation Data Set and Benchmarks 500 (BSDS500)](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html).<br/>
+
 ```
 |-- data
     |-- BSDS
