@@ -438,7 +438,7 @@ The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the tabl
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER-VOC) are as:
 |    Model    | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
 | ------------| ---- | ---- | ---- | ---- | ---- | ---- |
-|🔥EDTER-VOC-Stage II|0.832 |0.847 |0.886 |0.848 |0.865 |0.906 |
+|🔥EDTER-VOC-Stage II|0.832 |0.847 |0.886 |0.848 |0.865 |0.903 |
 
 The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the table:
 |   iter   | ODS(SS)  | OIS(SS)  | AP(SS)   | ODS(MS)  | OIS(MS)  | AP(MS)   |
