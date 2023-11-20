@@ -19,7 +19,7 @@
     2.1 Step1: The training of EDTER-Stage I on BSDS500
     2.2 Step2: The training of EDTER-Stage II on BSDS500
     2.3 How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
-        Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
+        Step1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
     2.4 Step2: The training of EDTER-VOC-Stage I on BSDS500
     2.5 Step3: The training of EDTER-VOC-Stage II on BSDS500
 3 Testing
@@ -37,7 +37,7 @@
 6 Results
 7 Download the Pre-trained model
 Important notes
-Acknowledgements
+Acknowledgments
 Reference
 ```
 ## Issues and Answers
@@ -86,7 +86,7 @@ pip install -r requirements/optional.txt
 
 ### 1.2 Datasets
 #### BSDS500
-Download the augmented BSDS500 data (1.2GB) from [here](https://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
+Download the augmented BSDS500 data (1.2GB) from [HED-BSDS](https://vcl.ucsd.edu/hed/HED-BSDS.tar).<br/>
 The original BSDS500 dataset can be downloaded from [Berkeley Segmentation Data Set and Benchmarks 500 (BSDS500)](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html).<br/>
 
 ```
@@ -109,8 +109,7 @@ The original BSDS500 dataset can be downloaded from [Berkeley Segmentation Data 
 ```
 
 #### PASCAL VOC
-Download the augmented PASCAL VOC data from [here](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)
-(Code:83cv).
+Download the augmented PASCAL VOC data from [BaiDuNetdisk](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv).
 ```
 |-- data
     |-- PASCAL
@@ -134,7 +133,7 @@ Download the augmented PASCAL VOC data from [here](https://pan.baidu.com/s/1d9CT
 ```
 
 #### NYUD
-Download the augmented NYUD data (~11GB) from [here](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg?pwd=t2ce)(Code:t2ce).<br/>
+Download the augmented NYUD data (~11GB) from [BaiDuNetdisk](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg?pwd=t2ce).<br/>
 ```
 |-- data
     |-- NYUD
@@ -378,7 +377,7 @@ The **reproduced results** of EDTER-Stage I on BSDS500 are shown in the table:
 
 **SS: Single-Scale testing, MS: Multi-Scale testing**
 
-**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).**
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [Google Drive](https://drive.google.com/drive/folders/1vwX_gAmhCvJwbMEGGO1Hh63-xrWMzgXA?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35).**
 
 ### 4.2 The results of EDTER-Stage II on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER) are as:
@@ -398,7 +397,7 @@ The **reproduced results** of EDTER-Stage II on BSDS500 are shown in the table:
 | 70k	   |0.820 |0.837 |0.875 |0.833 |0.851 |0.890 |
 | 80k	   |0.817 |0.836 |0.873 |0.829 |0.848 |0.888 |
 
-**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).**
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [Google Drive](https://drive.google.com/drive/folders/1I9C_FeV1hPM3lZzdAOkKSyeSl9OBw3Mm?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm).**
 
 
 ### 4.3 The EDTER model pre-trained on the PASCAL VOC Context dataset
@@ -414,7 +413,7 @@ On the testing set of BSDS500, we report the results of **the EDTER model pre-tr
 | 70k	   |0.757 |0.771 |0.810 |
 | 80k	   |0.757 |0.771 |0.810 |
 
-**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v).**
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [Google Drive](https://drive.google.com/drive/folders/1pFCRjHfD-Jpnxn0STOouhGM4zpof2dGe?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v).**
 
 
 ### 4.4 The results of EDTER-VOC-Stage I on BSDS500
@@ -432,7 +431,7 @@ The **reproduced results** of EDTER-VOC-Stage I on BSDS500 are shown in the tabl
 | 70k	   |0.819 |0.835 |0.869 |0.838 |0.854 |0.890 |
 | 80k	   |0.819 |0.834 |0.868 |0.838 |0.854 |0.890 |
 
-**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).**
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [Google Drive](https://drive.google.com/drive/folders/1tN9OK29SA6CgRs7jyc1ImicTxsqgDQf7?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv).**
 
 ### 4.5 The results of EDTER-VOC-Stage II on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (Table 3, EDTER-VOC) are as:
@@ -452,7 +451,7 @@ The **reproduced results** of EDTER-VOC-Stage II on BSDS500 are shown in the tab
 | 70k	   |0.816 |0.833 |0.872 |0.831 |0.848 |0.888 |
 | 80k	   |0.815 |0.832 |0.871 |0.830 |0.848 |0.887 |
 
-**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).**
+**🔥All files generated during the training process, including the models and test results (.png and .mat files) for every 10k iterations, and the training logs can be downloaded through [Google Drive](https://drive.google.com/drive/folders/1TXwwK-4YUa596EX6PWvYAJvtl4Hx2Wcw?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm).**
 
 
 ## 5 [Eval](https://github.com/MengyangPu/EDTER/tree/main/eval)
@@ -462,32 +461,34 @@ cd eval
 run eval_bsds.m
 ```
 #### NYUD
-Download the matfile(NYUD) from [here](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA)(Code:25p8).<br/>
+Download the matfile (NYUD) from [BaiDuNetdisk](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA?pwd=25p8).<br/>
 ```shell
 cd eval
 run eval_nyud.m
 ```
 
 ## 6 Results
-If you want to compare your method with EDTER, you can download the precomputed results [BSDS500](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing) and [NYUD](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw)(code:b941).
+If you want to compare your method with EDTER, you can download the pre-computed results:<br/>
+BSDS500: [Google Drive](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing). <br/>
+NYUD: [BaiDuNetdisk](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw?pwd=b941).
 
 ## 7 Download Pre-trained model
 
 | model                                            | Pre-trained Model                                                              |
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
-|[EDTER-BSDS-VOC-StageI](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py/)           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA)  (Code:l282) or [Google Drive](https://drive.google.com/drive/folders/1OkdakKKIMRGnKH8mxuFi_qI9sa903CD2?usp=share_link)|
-|[EDTER-BSDS-VOC-StageII](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw)  (Code:skjw) or [Google Drive](https://drive.google.com/drive/folders/1OkdakKKIMRGnKH8mxuFi_qI9sa903CD2?usp=share_link)|
-|[EDTER-NYUD-RGB-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1nkBuXV1s4YUpkmu-7eYV-w)  (Code:dwdi)  |
-|[EDTER-NYUD-RGB-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1ihUbPeVr5cRt_vef4pkBZQ)  (Code:s00u)  |
-|[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A)  (Code:ko2f)  |
-|[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA)  (Code:p7wu)  |
+|[EDTER-BSDS-VOC-StageI](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py/)           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA?pwd=l282) or [Google Drive](https://drive.google.com/drive/folders/1OkdakKKIMRGnKH8mxuFi_qI9sa903CD2?usp=share_link)|
+|[EDTER-BSDS-VOC-StageII](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw?pwd=skjw) or [Google Drive](https://drive.google.com/drive/folders/1OkdakKKIMRGnKH8mxuFi_qI9sa903CD2?usp=share_link)|
+|[EDTER-NYUD-RGB-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1nkBuXV1s4YUpkmu-7eYV-w?pwd=dwdi)|
+|[EDTER-NYUD-RGB-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1ihUbPeVr5cRt_vef4pkBZQ?pwd=s00u)|
+|[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A?pwd=ko2f)|
+|[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA?pwd=p7wu)|
 
 ## ❗❗❗Important notes
 - ❗❗❗All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
 - ❗❗❗Training on distributed GPUs is not supported.
 
 ## Acknowledgements
-- We thank the anonymous reviewers for valuable and inspiring comments and suggestions.
+- We thank the anonymous reviewers for their valuable and inspiring comments and suggestions.
 - Thanks to the previous open-sourced repo:<br/>
   [SETR](https://github.com/fudan-zvg/SETR)<br/>
   [MMsegmentation](https://github.com/open-mmlab/mmsegmentation)<br/>
