@@ -27,7 +27,7 @@
     3.2 EDTER-Stage I with multi-scale testing
     3.4 EDTER-Stage II with single-scale testing
     3.5 EDTER-Stage II with multi-scale testing
-4 🔥🔥The original results v.s. The reproduced results🔥🔥
+4 🔥🔥The comparison of the reported results and the reproduced results🔥🔥
     4.1 The results of EDTER-Stage I on BSDS500
     4.2 The results of EDTER-Stage II on BSDS500
     4.3 The EDTER model pre-trained on the PASCAL VOC Context dataset
@@ -56,10 +56,10 @@ pip install -r requirements/optional.txt
 ```
 
 **🔥Q:** Dataset download.<br/>
-**🔥A:** Please refer to 1.2 [Datasets](https://github.com/MengyangPu/EDTER/#12-datasets)
+**🔥A:** Please refer to [1.2 Datasets](https://github.com/MengyangPu/EDTER/#12-datasets)
 
 **🔥🔥Q:** Reproduced results.<br/>
-**🔥🔥A:** Please refer to 4 [The original results v.s. The reproduced results](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.<br/>
+**🔥🔥A:** Please refer to [4 The comparison of the reported results and the reproduced results](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.<br/>
 ❗Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).<br/>
 |     Reproduced results   |                 Download             |
 | -------------------------| ------------------------------------ |
@@ -356,7 +356,7 @@ Please execute the command:
 cd EDTER
 python ./tools/test_local.py
 ```
-## 🔥🔥4 The original results v.s. The reproduced results🔥🔥
+## 🔥🔥4 The comparison of the reported results and the reproduced results🔥🔥
 ### 4.1 The results of EDTER-Stage I on BSDS500
 The **original results** reported in the [paper](https://arxiv.org/abs/2203.08566) (row 1 of Table 2) are as:
 |   Model    | ODS  | OIS  | AP   |
