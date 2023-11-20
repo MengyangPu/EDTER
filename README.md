@@ -5,7 +5,7 @@
 
 **🔥Update**<br/>
 *More detailed usage*<br/>
-*[The comparison of the reported results and the reproduced results](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results)*<br/>
+*[The comparison of the reported results and the reproduced results](https://github.com/MengyangPu/EDTER#4-the-comparison-of-the-reported-results-and-the-reproduced-results)*<br/>
 *All training logs, including the experimental environment*
 
 ## Contents
@@ -59,7 +59,7 @@ pip install -r requirements/optional.txt
 **🔥A:** Please refer to [1.2 Datasets](https://github.com/MengyangPu/EDTER/#12-datasets)
 
 **🔥🔥Q:** Reproduced results.<br/>
-**🔥🔥A:** Please refer to [4 The comparison of the reported results and the reproduced results](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.<br/>
+**🔥🔥A:** Please refer to [4 The comparison of the reported results and the reproduced results](https://github.com/MengyangPu/EDTER#4-the-comparison-of-the-reported-results-and-the-reproduced-results), and we upload all reproduced results on BaiDuNetdisk.<br/>
 ❗Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).<br/>
 |     Reproduced results   |                 Download             |
 | -------------------------| ------------------------------------ |
