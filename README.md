@@ -63,11 +63,11 @@ pip install -r requirements/optional.txt
 ❗Note: The capacity of our Google Drive is limited, and all training files (including .log files, .mat files, .png files, and .pth files) for each model are approximately 20GB, so we upload them to BaiDuNetdisk. If you cannot download it, please contact me (email:mengyang.pu@ncepu.edu.cn).<br/>
 |     Reproduced results   |                 Download             |
 | -------------------------| ------------------------------------ |
-| [EDTER-Stage I](https://github.com/MengyangPu/EDTER/#41-the-results-of-edter-stage-i-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35) |
-| [EDTER-Stage II](https://github.com/MengyangPu/EDTER/#42-the-results-of-edter-stage-ii-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm) |
-| [EDTER-VOC-Stage I pre-train](https://github.com/MengyangPu/EDTER/#43-the-edter-model-pre-trained-on-the-pascal-voc-context-dataset) | [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v) |
-| [EDTER-VOC-Stage I](https://github.com/MengyangPu/EDTER/#44-the-results-of-edter-voc-stage-i-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv) |
-| [EDTER-VOC-Stage II](https://github.com/MengyangPu/EDTER/#45-the-results-of-edter-voc-stage-ii-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm) |
+| [EDTER-Stage I](https://github.com/MengyangPu/EDTER/#41-the-results-of-edter-stage-i-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/158B9xct-J8nnOBGSPuotRA?pwd=nx35) or [Google Drive](https://drive.google.com/drive/folders/1vwX_gAmhCvJwbMEGGO1Hh63-xrWMzgXA?usp=sharing)|
+| [EDTER-Stage II](https://github.com/MengyangPu/EDTER/#42-the-results-of-edter-stage-ii-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/1JzlXAH8YnOEFiDncjSDZpA?pwd=mawm) or [Google Drive](https://drive.google.com/drive/folders/1I9C_FeV1hPM3lZzdAOkKSyeSl9OBw3Mm?usp=sharing)|
+| [EDTER-VOC-Stage I pre-train](https://github.com/MengyangPu/EDTER/#43-the-edter-model-pre-trained-on-the-pascal-voc-context-dataset) | [BaiDuNetdisk](https://pan.baidu.com/s/1SS62jBW-Qao7BQ3nXrDvYQ?pwd=dk5v) or [Google Drive](https://drive.google.com/drive/folders/1pFCRjHfD-Jpnxn0STOouhGM4zpof2dGe?usp=sharing)|
+| [EDTER-VOC-Stage I](https://github.com/MengyangPu/EDTER/#44-the-results-of-edter-voc-stage-i-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/15CIuL2r0fZckSifgNFanBw?pwd=iwwv) or [Google Drive](https://drive.google.com/drive/folders/1tN9OK29SA6CgRs7jyc1ImicTxsqgDQf7?usp=sharing)|
+| [EDTER-VOC-Stage II](https://github.com/MengyangPu/EDTER/#45-the-results-of-edter-voc-stage-ii-on-bsds500) | [BaiDuNetdisk](https://pan.baidu.com/s/1LmgQiCiWKrwzEuog5BQ_ng?pwd=b9rm) or [Google Drive](https://drive.google.com/drive/folders/1TXwwK-4YUa596EX6PWvYAJvtl4Hx2Wcw?usp=sharing)|
 
 ## 1 Usage
 Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
