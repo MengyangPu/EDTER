@@ -5,7 +5,7 @@
 
 **🔥Update**<br/>
 *More detailed usage*<br/>
-*Comparison of reproduction results and original results*<br/>
+*The comparison of the reported results and the reproduced results*<br/>
 *All training logs, including the experimental environment*
 
 ## Contents
