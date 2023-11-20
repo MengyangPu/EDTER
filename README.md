@@ -5,7 +5,7 @@
 
 **🔥Update**<br/>
 *More detailed usage*<br/>
-*The comparison of the reported results and the reproduced results*<br/>
+*[The comparison of the reported results and the reproduced results](https://github.com/MengyangPu/EDTER/#4-the-original-results-vs-the-reproduced-results)*<br/>
 *All training logs, including the experimental environment*
 
 ## Contents
