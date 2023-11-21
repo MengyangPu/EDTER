@@ -133,7 +133,7 @@ Download the augmented PASCAL VOC data from [Google Drive](https://drive.google.
 ```
 
 #### NYUD
-Download the augmented NYUD data (~11GB) from [BaiDuNetdisk](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg?pwd=t2ce).<br/>
+Download the augmented NYUD data (~11GB) from [Google Drive](https://drive.google.com/drive/folders/1TQpKzCV4Ujkfs4V_vMasKAcvg3p4ByCN?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1J5z6235tv1xef3HXTaqnKg?pwd=t2ce).<br/>
 ```
 |-- data
     |-- NYUD
