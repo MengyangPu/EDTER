@@ -73,7 +73,7 @@ pip install -r requirements/optional.txt
 Our project is developed based on [MMsegmentation](https://github.com/open-mmlab/mmsegmentation). Please follow the official MMsegmentation [INSTALL.md](https://github.com/fudan-zvg/SETR/blob/main/docs/install.md) and [getting_started.md](https://github.com/fudan-zvg/SETR/blob/main/docs/getting_started.md) for installation and dataset preparation.
 
 ### 1.1 Linux
-The full script for setting up EDTER with conda is following [here](https://github.com/fudan-zvg/SETR).
+The full script for setting up EDTER with conda is following [SETR](https://github.com/fudan-zvg/SETR#linux).
 ```
 conda create -n edter python=3.7 -y
 conda activate edter
@@ -109,7 +109,7 @@ The original BSDS500 dataset can be downloaded from [Berkeley Segmentation Data 
 ```
 
 #### PASCAL VOC
-Download the augmented PASCAL VOC data from [BaiDuNetdisk](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv) or [Google Drive](https://drive.google.com/file/d/1NfL7__nVP5U0TzbF765EsC5qvt8nwtg6/view?usp=sharing).
+Download the augmented PASCAL VOC data from [Google Drive](https://drive.google.com/file/d/1NfL7__nVP5U0TzbF765EsC5qvt8nwtg6/view?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv).
 ```
 |-- data
     |-- PASCAL
@@ -200,7 +200,7 @@ bash ./tools/dist_train_local.sh configs/bsds/EDTER_BIMLA_320x320_80k_bsds_bs_8.
 ```
 ### 2.3 How to train the EDTER model on BSDS-VOC (BSDS500 and PASCAL VOC Context):
 ### Step 1: The training of EDTER-VOC-Stage I on PASCAL VOC Context
-We first pre-train Stage I on [PASCAL VOC Context Dataset](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv).<br/>
+We first pre-train Stage I on PASCAL VOC Context Dataset ([Google Drive](https://drive.google.com/file/d/1NfL7__nVP5U0TzbF765EsC5qvt8nwtg6/view?usp=sharing), [BaiDuNetdisk](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv)).<br/>
 The command to train the first stage model on PASCAL VOC Context is as follows
 ```shell
 cd EDTER
@@ -461,7 +461,7 @@ cd eval
 run eval_bsds.m
 ```
 #### NYUD
-Download the matfile (NYUD) from [BaiDuNetdisk](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA?pwd=25p8) or [Google Drive](https://drive.google.com/file/d/143TS2kjtFk04XC-M2emFtKpurE_nNJBM/view?usp=sharing).<br/>
+Download the matfile (NYUD) from [Google Drive](https://drive.google.com/file/d/143TS2kjtFk04XC-M2emFtKpurE_nNJBM/view?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA?pwd=25p8).<br/>
 ```shell
 cd eval
 run eval_nyud.m
@@ -470,7 +470,7 @@ run eval_nyud.m
 ## 6 Results
 If you want to compare your method with EDTER, you can download the pre-computed results:<br/>
 BSDS500: [Google Drive](https://drive.google.com/file/d/1zL74whvVnrZAe-j2BveLD1yZrsrk-Vb5/view?usp=sharing). <br/>
-NYUD: [BaiDuNetdisk](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw?pwd=b941).
+NYUD: [Google Drive](https://drive.google.com/drive/folders/19HAfNIQB7sJ83Vj-7qgK5irOocAUtiN1?usp=sharing) or [BaiDuNetdisk](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw?pwd=b941).
 
 ## 7 Download Pre-trained model
 
