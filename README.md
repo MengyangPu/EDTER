@@ -109,7 +109,7 @@ The original BSDS500 dataset can be downloaded from [Berkeley Segmentation Data 
 ```
 
 #### PASCAL VOC
-Download the augmented PASCAL VOC data from [BaiDuNetdisk](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv).
+Download the augmented PASCAL VOC data from [BaiDuNetdisk](https://pan.baidu.com/s/1d9CTR9w1MTcVrBvG-WIIXw?pwd=83cv) or [Google Drive](https://drive.google.com/file/d/1NfL7__nVP5U0TzbF765EsC5qvt8nwtg6/view?usp=sharing).
 ```
 |-- data
     |-- PASCAL
@@ -164,7 +164,7 @@ Download the augmented NYUD data (~11GB) from [BaiDuNetdisk](https://pan.baidu.c
 
 ### 1.3 Initial weights
 If you are unable to download due to network reasons, you can download the initial weights from [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_p16_384-83fb41ba.pth)(VIT-base-p16) and [here](https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_large_p16_384-b3be5167.pth)(VIT-large-p16).<br/>
-The two .pth files of initial weights should be placed in the [folder](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
+The two .pth files of initial weights should be placed in the folder -- [./pretrain](https://github.com/MengyangPu/EDTER/tree/main/pretrain).
 ```
 |-- EDTER
     |-- pretrain
@@ -461,7 +461,7 @@ cd eval
 run eval_bsds.m
 ```
 #### NYUD
-Download the matfile (NYUD) from [BaiDuNetdisk](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA?pwd=25p8).<br/>
+Download the matfile (NYUD) from [BaiDuNetdisk](https://pan.baidu.com/s/1LEeoOKkzdcewmPhq5z86wA?pwd=25p8) or [Google Drive](https://drive.google.com/file/d/143TS2kjtFk04XC-M2emFtKpurE_nNJBM/view?usp=sharing).<br/>
 ```shell
 cd eval
 run eval_nyud.m
@@ -478,10 +478,10 @@ NYUD: [BaiDuNetdisk](https://pan.baidu.com/s/1xy5JOqs_zLpOoTOlzb5Bxw?pwd=b941).
 | ------------------------------------------------ | ------------------------------------------------------------------------------ | 
 |[EDTER-BSDS-VOC-StageI](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_bs_8.py/)           | [BaiDuNetdisk](https://pan.baidu.com/s/1xxkDRUoy9vfO6rtjx_GOqA?pwd=l282) or [Google Drive](https://drive.google.com/drive/folders/1OkdakKKIMRGnKH8mxuFi_qI9sa903CD2?usp=share_link)|
 |[EDTER-BSDS-VOC-StageII](configs/bsds/EDTER_BIMLA_320x320_80k_bsds_aug_local8x8_bs_8.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1hT1v24H6GjjjjMXqe_Knuw?pwd=skjw) or [Google Drive](https://drive.google.com/drive/folders/1OkdakKKIMRGnKH8mxuFi_qI9sa903CD2?usp=share_link)|
-|[EDTER-NYUD-RGB-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1nkBuXV1s4YUpkmu-7eYV-w?pwd=dwdi)|
-|[EDTER-NYUD-RGB-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1ihUbPeVr5cRt_vef4pkBZQ?pwd=s00u)|
-|[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A?pwd=ko2f)|
-|[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA?pwd=p7wu)|
+|[EDTER-NYUD-RGB-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1nkBuXV1s4YUpkmu-7eYV-w?pwd=dwdi) or [Google Drive](https://drive.google.com/file/d/1D88fULxXrPXXp-NrsB2RNMpA8aCzvldN/view?usp=sharing)|
+|[EDTER-NYUD-RGB-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_rgb_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1ihUbPeVr5cRt_vef4pkBZQ?pwd=s00u) or [Google Drive](https://drive.google.com/file/d/1XhBfexCZaBqBsaoWza-w6moahwULa6gm/view?usp=sharing)|
+|[EDTER-NYUD-HHA-StageI](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1xzPela1UYTNa9Mdk-i_G-A?pwd=ko2f) or [Google Drive](https://drive.google.com/file/d/1AOXgR7Ulw_4eFPZVi2seT0J3wG9rdC9U/view?usp=sharing)|
+|[EDTER-NYUD-HHA-StageII](configs/nyud/EDTER_BIMLA_320x320_40k_nyud_hha_local8x8_bs_4.py/)          | [BaiDuNetdisk](https://pan.baidu.com/s/1huMD4Ecop6ACrK1O4VToNA?pwd=p7wu) or [Google Drive](https://drive.google.com/file/d/15qYXelMjMWH4r9_f3tHL5V4M3PbGjQFD/view?usp=sharing)|
 
 ## ❗❗❗Important notes
 - ❗❗❗All the models are trained and tested on a single machine with multiple NVIDIA-V100-32G GPUs.
