@@ -27,7 +27,7 @@ class EvalHook(Hook):
         from mmseg.apis import single_gpu_test
         runner.log_buffer.clear()
         results = single_gpu_test(runner.model, self.dataloader, show=False)
-        self.evaluate(runner, results)
+        #self.evaluate(runner, results)
 
     def evaluate(self, runner, results):
         """Call evaluate function of dataset."""
